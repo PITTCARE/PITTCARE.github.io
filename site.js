@@ -347,6 +347,7 @@
         <ul class="footer-links">
           <li><a href="mailto:pittcare@pitt.edu">pittcare@pitt.edu</a></li>
           <li><a href="https://www.dbmi.pitt.edu" target="_blank" rel="noopener">Dept. of Biomedical Informatics</a></li>
+          <li><a href="https://www.sci.pitt.edu" target="_blank" rel="noopener">School of Computing and Information</a></li>
           <li><a href="https://www.dom.pitt.edu/fm" target="_blank" rel="noopener">Dept. of Family Medicine</a></li>
           <li><a href="https://www.medschool.pitt.edu" target="_blank" rel="noopener">School of Medicine</a></li>
           <li><a href="https://www.healthsciences.pitt.edu" target="_blank" rel="noopener">Pitt Health Sciences</a></li>
