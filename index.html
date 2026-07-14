@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PITTCARE — Center for Primary Care Intelligence-Technology and Transformation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Brand tokens ─────────────────────────────────────────────── */
+    :root {
+      --royal:      #003594;
+      --royal-dark: #002570;
+      --gold:       #ffb81c;
+      --light-blue: #66b2e3;
+      --new-sky:    #dbeeff;
+      --white:      #ffffff;
+      --black:      #000000;
+      --gray:       #c8c9c7;
+      --gray-light: #f4f6fa;
+      --text-body:  #1a1a2e;
+
+      --font-sans:  'Roboto', sans-serif;
+      --font-serif: 'Merriweather', serif;
+
+      --max-w: 1140px;
+      --section-pad: clamp(60px, 8vw, 110px) clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-body);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ──────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--royal);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-brand span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── Six-node motif (signature element) ──────────────────────── */
+    .nodes {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .node {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.35;
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .node.active {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+
+    .node-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .node-row .node { width: 8px; height: 8px; }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      background: var(--royal);
+      color: var(--white);
+      padding: clamp(80px,10vw,130px) clamp(20px,5vw,80px) clamp(70px,9vw,120px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle cellular texture via SVG background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='60' cy='0' r='20'/%3E%3Ccircle cx='0' cy='60' r='20'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(42px, 6.5vw, 76px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-full-name {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(14px, 1.6vw, 18px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    .hero-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .hero-body {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: clamp(16px, 1.8vw, 20px);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--royal);
+    }
+
+    .btn-primary:hover {
+      background: #e8a510;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-node-strip {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-right: 0;
+      opacity: 0.4;
+    }
+
+    .hero-node-strip .node {
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      opacity: 1;
+    }
+
+    /* ── Section base ─────────────────────────────────────────────── */
+    section { padding: var(--section-pad); }
+
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--light-blue);
+    }
+
+    .section-label.on-dark { color: var(--gold); }
+    .section-label.on-dark::before { background: var(--gold); }
+
+    .section-h2 {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--royal);
+      margin-bottom: 16px;
+    }
+
+    .section-h2.on-dark { color: var(--white); }
+
+    .section-lead {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.7;
+      color: #3a3a4a;
+      max-width: 640px;
+      margin-bottom: 52px;
+    }
+
+    .section-lead.on-dark { color: rgba(255,255,255,0.8); }
+
+    /* ── Vision / Mission band ────────────────────────────────────── */
+    .vm-band {
+      background: var(--new-sky);
+      padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px);
+    }
+
+    .vm-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .vm-card {
+      padding: 36px 40px;
+    }
+
+    .vm-card.royal {
+      background: var(--royal);
+      color: var(--white);
+    }
+
+    .vm-card.white {
+      background: var(--white);
+    }
+
+    .vm-label {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .vm-card.royal .vm-label { color: var(--gold); }
+    .vm-card.white .vm-label { color: var(--light-blue); }
+
+    .vm-text {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(15px,1.5vw,17px);
+      line-height: 1.75;
+    }
+
+    .vm-card.royal .vm-text { color: rgba(255,255,255,0.9); }
+    .vm-card.white .vm-text { color: var(--text-body); }
+
+    /* ── THE NAME section ─────────────────────────────────────────── */
+    .name-section { background: var(--white); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .pillar {
+      padding: 32px 28px 36px;
+      border-top: 4px solid var(--gold);
+      background: var(--gray-light);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .pillar:nth-child(even) { background: var(--white); }
+
+    .pillar:hover { background: var(--new-sky); }
+
+    .pillar-letter {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--royal);
+      margin-bottom: 6px;
+    }
+
+    .pillar-word {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--royal);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vop-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .pillar-desc {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .pillars-note {
+      margin-top: 20px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── Focus Areas ──────────────────────────────────────────────── */
+    .focus-section { background: var(--royal); }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 0;
+    }
+
+    .focus-card {
+      background: rgba(255,255,255,0.07);
+      padding: 36px 32px;
+      border-top: 3px solid var(--gold);
+      transition: background 0.2s;
+    }
+
+    .focus-card:hover { background: rgba(255,255,255,0.12); }
+
+    .focus-card.vop-card {
+      border-top-color: var(--light-blue);
+      background: rgba(102,178,227,0.12);
+    }
+
+    .focus-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .focus-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .focus-card.vop-card .focus-title { color: var(--light-blue); }
+
+    .focus-body {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* ── Voice of the People feature ─────────────────────────────── */
+    .vop-section { background: var(--gray-light); }
+
+    .vop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .vop-main h3 {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(28px,3.5vw,42px);
+      line-height: 1.1;
+      color: var(--royal);
+      margin-bottom: 24px;
+    }
+
+    .vop-main h3 em {
+      font-style: normal;
+      color: var(--light-blue);
+    }
+
+    .vop-main p {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(14px,1.4vw,16px);
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 18px;
+    }
+
+    .vop-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .vop-fact {
+      background: var(--royal);
+      color: var(--white);
+      padding: 28px 30px;
+    }
+
+    .vop-fact-label {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .vop-fact-text {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+    }
+
+    /* ── School affiliation ───────────────────────────────────────── */
+    .schools-section { background: var(--white); }
+
+    .schools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .school-card {
+      padding: 28px 30px;
+      border-left: 4px solid var(--royal);
+      background: var(--gray-light);
+    }
+
+    .school-card.primary { border-left-color: var(--royal); }
+    .school-card.partner { border-left-color: var(--light-blue); }
+    .school-card.future  { border-left-color: var(--gray); opacity: 0.65; }
+
+    .school-badge {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .school-card.primary .school-badge { background: var(--royal); color: var(--white); }
+    .school-card.partner .school-badge { background: var(--light-blue); color: var(--royal); }
+    .school-card.future  .school-badge { background: var(--gray); color: #444; }
+
+    .school-name {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--royal);
+      margin-bottom: 8px;
+    }
+
+    .school-card.future .school-name { color: #666; }
+
+    .school-desc {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    /* ── Node border divider ──────────────────────────────────────── */
+    .node-divider {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding: 28px 0;
+      background: var(--royal);
+    }
+
+    .node-divider .nd {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .node-divider .nd.dim { opacity: 0.25; }
+
+    /* ── Contact / footer ─────────────────────────────────────────── */
+    .footer-section {
+      background: var(--royal-dark);
+      padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 36px;
+      color: var(--white);
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 28px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .footer-brand-name span { color: var(--gold); }
+
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-affil {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom-text {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .pitt-hs-schools {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Scroll-triggered fade ────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .focus-grid   { grid-template-columns: 1fr; }
+      .vop-grid     { grid-template-columns: 1fr; }
+      .vm-grid      { grid-template-columns: 1fr; gap: 24px; }
+      .footer-top   { grid-template-columns: 1fr; gap: 32px; }
+      .hero-node-strip { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links    { display: none; }
+      .hero h1      { font-size: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────────── -->
+  <nav class="nav">
+    <a href="#" class="nav-brand">PITT<span>CARE</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#the-name">The Name</a></li>
+      <li><a href="#focus">Research</a></li>
+      <li><a href="#vop">Voice of the People</a></li>
+      <li><a href="#schools">Affiliations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">University of Pittsburgh · School of Medicine · Department of Family Medicine</p>
+      <h1>PITT<span class="accent">CARE</span></h1>
+      <p class="hero-full-name">
+        Center for Primary Care Intelligence-Technology and Transformation —<br>
+        Comprehensive, Accessible, Relationship-Centered, and for Everyone
+      </p>
+      <div class="hero-rule"></div>
+      <p class="hero-body">
+        A future in which Intelligence-Technology strengthens — not supplants — the relationship between family physicians and the patients, families, and communities they serve, delivering optimal health for everyone.
+      </p>
+      <div class="hero-ctas">
+        <a href="#about" class="btn btn-primary">Our Mission</a>
+        <a href="#vop" class="btn btn-outline">Voice of the People Survey</a>
+      </div>
+
+      <!-- Six-node strip — signature element -->
+      <div class="hero-node-strip nodes">
+        <div class="node active"></div>
+        <div class="node active"></div>
+        <div class="node active"></div>
+        <div class="node active"></div>
+        <div class="node active"></div>
+        <div class="node active"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Vision / Mission ────────────────────────────────────────── -->
+  <div class="vm-band" id="about">
+    <div class="vm-grid">
+      <div class="vm-card royal fade-in">
+        <div class="vm-label">Mission</div>
+        <p class="vm-text">To generate, translate, and disseminate research on the application of Intelligence-Technology in primary care — advancing comprehensive, continuous, and relationship-centered care for everyone, across all ages, backgrounds, and conditions.</p>
+      </div>
+      <div class="vm-card white fade-in">
+        <div class="vm-label">Vision</div>
+        <p class="vm-text">A future in which Intelligence-Technology strengthens — not supplants — the relationship between family physicians and the patients, families, and communities they serve, delivering optimal health for everyone.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── What is Intelligence-Technology ────────────────────────── -->
+  <section style="background: var(--white); padding: var(--section-pad);" id="it">
+    <div class="section-inner">
+      <p class="section-label">A new term for the field</p>
+      <h2 class="section-h2 fade-in">What is Intelligence-Technology?</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+        <p class="section-lead" style="margin-bottom:0;" >
+          We use <strong>Intelligence-Technology (IT)</strong> as a unified term for the application of machine learning, clinical decision support, and data-driven systems in health care — broader and more enduring than "AI" alone.
+        </p>
+        <p style="font-family:var(--font-serif); font-weight:300; font-size:clamp(14px,1.4vw,16px); line-height:1.8; color:#444; padding-top:4px;" class="fade-in">
+          The term "Artificial Intelligence" is useful shorthand, but it understates the full scope of what is transforming primary care — and it will age. Intelligence-Technology captures the continuum: from simple decision-support algorithms to large language models, from risk stratification to automated documentation, from wearable sensors to ambient AI. It also names the tension our center exists to navigate: <em>intelligence</em> that must serve human values, and <em>technology</em> that must earn its place in the exam room.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+  </div>
+
+  <!-- ── THE NAME ─────────────────────────────────────────────────── -->
+  <section class="name-section" id="the-name" style="padding: var(--section-pad);">
+    <div class="section-inner">
+      <p class="section-label">The name</p>
+      <h2 class="section-h2 fade-in">Every letter is a founding principle</h2>
+      <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; color:#555; margin-bottom:40px; line-height:1.7; max-width:680px;">
+        Each letter in PITTCARE encodes a value drawn from the canonical language of family medicine, as defined by the AAFP and ABFM. Letters marked with ◆ carry a Voice of the People dimension — a commitment to hearing patients and communities as active participants, not passive subjects.
+      </p>
+      <div class="pillars-grid fade-in">
+        <div class="pillar">
+          <div class="pillar-letter">P</div>
+          <div class="pillar-word">Primary Care</div>
+          <p class="pillar-desc">Anchored in the Department of Family Medicine at the University of Pittsburgh — the continuous, front-line home for individuals, families, and communities across all ages and conditions.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">I</div>
+          <div class="pillar-word">Intelligence-Technology</div>
+          <p class="pillar-desc">A unified term for the application of machine learning, clinical decision support, and data-driven systems in health care — broader and more enduring than "AI" alone.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">T</div>
+          <div class="pillar-word">
+            Translational
+            <span class="vop-dot" title="Voice of the People dimension"></span>
+          </div>
+          <p class="pillar-desc">Research reaches people only when it is built with them. Translation means co-producing knowledge alongside the patients, families, and clinicians who will live with its consequences — the Voice of the People Survey is how we ensure that direction never drifts from those it is meant to serve.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">T</div>
+          <div class="pillar-word">Transformation</div>
+          <p class="pillar-desc">Driving measurable change in how care is delivered, how clinicians are supported, and how communities experience the benefits — and bear the risks — of Intelligence-Technology in primary care.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">C</div>
+          <div class="pillar-word">Comprehensive</div>
+          <p class="pillar-desc">Care that addresses the full scope of a person's health — across conditions, life stages, and the biopsychosocial dimensions that define whole-person, relationship-centered medicine.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">A</div>
+          <div class="pillar-word">
+            Accessible
+            <span class="vop-dot" title="Voice of the People dimension"></span>
+          </div>
+          <p class="pillar-desc">Accessible means more than reach — it means a seat at the table. Patients and communities should have a meaningful voice in how Intelligence-Technology is designed, governed, and deployed in their care. The Voice of the People Survey is our annual commitment to that principle.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">R</div>
+          <div class="pillar-word">
+            Relationship-Centered
+            <span class="vop-dot" title="Voice of the People dimension"></span>
+          </div>
+          <p class="pillar-desc">The physician-patient bond is one relationship; the center's relationship with the public is another. Through the Voice of the People Survey, we extend the relational model of family medicine outward — listening to patients, families, and clinicians each year, not just treating or studying them.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-letter">E</div>
+          <div class="pillar-word">
+            Everyone
+            <span class="vop-dot" title="Voice of the People dimension"></span>
+          </div>
+          <p class="pillar-desc">Optimal health for everyone requires that everyone be heard. The Voice of the People Survey is our structural commitment to that — reaching a representative cross-section of patients, families, and physicians annually, so that no community's experience of Intelligence-Technology goes unrecorded or unaddressed.</p>
+        </div>
+      </div>
+      <p class="pillars-note">
+        <span class="vop-dot"></span>
+        Letters marked with ◆ carry a Voice of the People dimension — grounded in AAFP · ABFM canonical language
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Focus Areas ─────────────────────────────────────────────── -->
+  <section class="focus-section" id="focus" style="padding: var(--section-pad);">
+    <div class="section-inner">
+      <p class="section-label on-dark">Core focus areas</p>
+      <h2 class="section-h2 on-dark fade-in">Research that serves people first</h2>
+      <p class="section-lead on-dark">Three interconnected areas where Intelligence-Technology meets the values of family medicine — comprehensive, continuous, and centered on everyone.</p>
+      <div class="focus-grid fade-in">
+        <div class="focus-card">
+          <span class="focus-icon">⚕</span>
+          <div class="focus-title">Clinical Decision Support</div>
+          <p class="focus-body">Applying Intelligence-Technology at the point of care to assist family physicians with diagnosis, preventive care, and chronic disease management — augmenting clinical judgment without displacing it.</p>
+        </div>
+        <div class="focus-card">
+          <span class="focus-icon">◎</span>
+          <div class="focus-title">Whole-Person &amp; Behavioral Health</div>
+          <p class="focus-body">Integrating the biopsychosocial model into IT systems — ensuring mental health, social context, spiritual dimensions, and patient values are present in how algorithms reason and recommend.</p>
+        </div>
+        <div class="focus-card vop-card">
+          <span class="focus-icon">◆</span>
+          <div class="focus-title">Voice of the People Survey</div>
+          <p class="focus-body">An annual structured-interview study of patients, families, and physicians on their experiences with Intelligence-Technology in care — published each year as a public report and community resource.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Voice of the People ─────────────────────────────────────── -->
+  <section class="vop-section" id="vop" style="padding: var(--section-pad);">
+    <div class="section-inner">
+      <p class="section-label">A hallmark commitment</p>
+      <div class="vop-grid">
+        <div class="vop-main">
+          <h3>Voice of the<br><em>People Survey</em></h3>
+          <p>Because Intelligence-Technology in health care changes rapidly, PITTCARE conducts a structured-interview study every year — reaching patients, families, and physicians — to understand what people think about the use of Intelligence-Technology in their care.</p>
+          <p>The survey is not a one-time snapshot. It is a standing relationship between the center and the public — an annual commitment to listening before acting, to co-producing knowledge with the people most affected by the technologies we study.</p>
+          <p>Results are published each year and disseminated through clinical, academic, community, and media channels — ensuring that the perspectives of everyone, not just those already in the room, continuously shape the center's research agenda.</p>
+          <a href="#contact" class="btn btn-primary" style="margin-top:24px; display:inline-block;">Learn about the 2025 Survey</a>
+        </div>
+        <div class="vop-sidebar fade-in">
+          <div class="vop-fact">
+            <div class="vop-fact-label">Why annual?</div>
+            <p class="vop-fact-text">Intelligence-Technology in health care evolves faster than most research cycles. What patients trust or fear today may shift as new tools enter their care. Annual listening captures that movement — and holds the center accountable to it.</p>
+          </div>
+          <div class="vop-fact">
+            <div class="vop-fact-label">Who is heard?</div>
+            <p class="vop-fact-text">A representative cross-section — patients across ages, backgrounds, and conditions; family physicians across practice settings. Structured interviews, not surveys, so that context and nuance are captured alongside responses.</p>
+          </div>
+          <div class="vop-fact" style="background: var(--new-sky);">
+            <div class="vop-fact-label" style="color:var(--royal);">How results are shared</div>
+            <p class="vop-fact-text" style="color:var(--royal);">Published as an open-access annual report and disseminated through clinical, community, academic, and media channels — designed to reach the people it represents, not just the researchers who conduct it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <!-- ── School Affiliations ─────────────────────────────────────── -->
+  <section class="schools-section" id="schools" style="padding: var(--section-pad);">
+    <div class="section-inner">
+      <p class="section-label">University of Pittsburgh Health Sciences</p>
+      <h2 class="section-h2 fade-in">Rooted in Medicine, open to all six schools</h2>
+      <p style="font-family:var(--font-serif); font-weight:300; font-size:clamp(14px,1.4vw,16px); line-height:1.8; color:#444; max-width:680px; margin-bottom:40px;">
+        PITTCARE is housed in the <strong>School of Medicine</strong> Department of Family Medicine. By its nature — studying Intelligence-Technology across the full scope of primary care — it invites collaboration across all of Pitt Health Sciences. The node border below reflects where we are today; the dimmed nodes reflect where we are heading.
+      </p>
+      <div class="schools-grid fade-in">
+        <div class="school-card primary">
+          <span class="school-badge">Home school</span>
+          <div class="school-name">School of Medicine</div>
+          <p class="school-desc">PITTCARE is housed in the Department of Family Medicine. Primary care intelligence, clinical decision support, and whole-person health are the center's core domain.</p>
+        </div>
+        <div class="school-card partner">
+          <span class="school-badge">Active partner</span>
+          <div class="school-name">School of Health and Rehabilitation Sciences</div>
+          <p class="school-desc">Collaboration on functional outcomes, rehabilitation technology, and the application of IT to whole-person and community health across the lifespan.</p>
+        </div>
+        <div class="school-card future">
+          <span class="school-badge">Future collaboration</span>
+          <div class="school-name">School of Public Health</div>
+          <p class="school-desc">Population health, epidemiology, and health equity research — natural partners for the Voice of the People Survey and community-level IT impact studies.</p>
+        </div>
+        <div class="school-card future">
+          <span class="school-badge">Future collaboration</span>
+          <div class="school-name">School of Nursing</div>
+          <p class="school-desc">Nursing informatics, care coordination, and the front-line clinical perspective on how IT tools are experienced by patients and care teams.</p>
+        </div>
+        <div class="school-card future">
+          <span class="school-badge">Future collaboration</span>
+          <div class="school-name">School of Pharmacy</div>
+          <p class="school-desc">Medication management, clinical pharmacology, and the role of IT in medication safety and shared decision-making in primary care.</p>
+        </div>
+        <div class="school-card future">
+          <span class="school-badge">Future collaboration</span>
+          <div class="school-name">School of Dental Medicine</div>
+          <p class="school-desc">Oral health as a dimension of whole-person care — integration of dental and primary care IT systems and the biopsychosocial model of comprehensive health.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--font-sans); font-size:12px; color:#888; margin-top:24px; letter-spacing:0.06em; text-transform:uppercase;">
+        Dental Medicine + Health and Rehabilitation Sciences + Medicine + Nursing + Pharmacy + Public Health
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Contact / Footer ────────────────────────────────────────── -->
+  <footer class="footer-section" id="contact">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">PITT<span>CARE</span></div>
+          <p class="footer-tagline">Center for Primary Care Intelligence-Technology<br>and Transformation</p>
+          <p class="footer-affil">
+            Department of Family Medicine<br>
+            School of Medicine<br>
+            University of Pittsburgh Health Sciences<br>
+            pittcare.github.io
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="#about">About PITTCARE</a></li>
+            <li><a href="#the-name">The Name</a></li>
+            <li><a href="#focus">Research Focus Areas</a></li>
+            <li><a href="#vop">Voice of the People Survey</a></li>
+            <li><a href="#schools">School Affiliations</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="mailto:pittcare@pitt.edu">pittcare@pitt.edu</a></li>
+            <li><a href="https://www.dom.pitt.edu/fm" target="_blank">Dept. of Family Medicine</a></li>
+            <li><a href="https://www.medschool.pitt.edu" target="_blank">School of Medicine</a></li>
+            <li><a href="https://www.healthsciences.pitt.edu" target="_blank">Pitt Health Sciences</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2025 University of Pittsburgh PITTCARE. University of Pittsburgh Health Sciences.</p>
+        <p class="pitt-hs-schools">Dental Medicine + Health and Rehabilitation Sciences + Medicine + Nursing + Pharmacy + Public Health</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Animate the hero nodes on load
+    const heroNodes = document.querySelectorAll('.hero-node-strip .node');
+    heroNodes.forEach((n, i) => {
+      n.style.opacity = '0';
+      n.style.transform = 'scale(0.5)';
+      setTimeout(() => {
+        n.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        n.style.opacity = '1';
+        n.style.transform = 'scale(1)';
+      }, 600 + i * 120);
+    });
+  </script>
+</body>
+</html>
