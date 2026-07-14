@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborators — PITTCARE</title>
+  <meta name="description" content="PITTCARE's research collaborators across the University of Pittsburgh Health Sciences and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Brand tokens (identical across all PITTCARE pages) ───────── */
+    :root {
+      --royal:      #003594;
+      --royal-dark: #002570;
+      --gold:       #ffb81c;
+      --light-blue: #66b2e3;
+      --new-sky:    #dbeeff;
+      --white:      #ffffff;
+      --gray:       #c8c9c7;
+      --gray-light: #f4f6fa;
+      --text-body:  #1a1a2e;
+      --font-sans:  'Roboto', sans-serif;
+      --font-serif: 'Merriweather', serif;
+      --max-w:      1140px;
+      --page-pad:   0 clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text-body); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* ── Shared nav (written by site.js) ──────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--royal);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .nav-brand { font-family: var(--font-sans); font-weight: 800; font-size: 22px; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: var(--font-sans); font-weight: 500; font-size: 13px; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; padding: 4px 0; border-bottom: 2px solid transparent; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── Page header ──────────────────────────────────────────────── */
+    .page-header {
+      background: var(--royal);
+      padding: clamp(48px,7vw,90px) clamp(20px,5vw,80px) clamp(40px,6vw,72px);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='60' cy='0' r='20'/%3E%3Ccircle cx='0' cy='60' r='20'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-header-inner { max-width: var(--max-w); margin: 0 auto; position: relative; }
+    .breadcrumb { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--light-blue); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb-sep { opacity: 0.4; }
+    .page-header h1 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(36px,5vw,62px); line-height: 1.0; color: var(--white); margin-bottom: 16px; }
+    .page-header h1 span { color: var(--gold); }
+    .page-header-lead { font-family: var(--font-serif); font-weight: 300; font-size: clamp(14px,1.5vw,17px); color: rgba(255,255,255,0.78); line-height: 1.7; max-width: 640px; }
+
+    /* ── Node divider ─────────────────────────────────────────────── */
+    .node-divider { display: flex; justify-content: center; gap: 16px; padding: 22px 0; background: var(--royal); }
+    .node-divider .nd { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+    .node-divider .nd.dim { opacity: 0.22; }
+
+    /* ── Section shell ────────────────────────────────────────────── */
+    .collab-school-section { padding: clamp(52px,7vw,88px) clamp(20px,5vw,80px); }
+    .collab-school-section:nth-child(even) { background: var(--gray-light); }
+    .collab-school-section:nth-child(odd)  { background: var(--white); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    /* ── School header row ────────────────────────────────────────── */
+    .school-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+      border-bottom: 2px solid var(--royal);
+    }
+    .school-header-left {}
+    .school-eyebrow { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .school-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--light-blue); }
+    .school-name { font-family: var(--font-sans); font-weight: 800; font-size: clamp(22px,3vw,32px); color: var(--royal); line-height: 1.1; margin-bottom: 6px; }
+    .school-sub { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: 14px; color: #666; }
+    .school-status-badge {
+      font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; margin-top: 6px;
+    }
+    .school-status-badge .badge-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .badge-active    { background: #e8f5ee; color: #0a5c2e; }
+    .badge-active    .badge-dot { background: #18a351; }
+    .badge-partner   { background: var(--new-sky); color: var(--royal); }
+    .badge-partner   .badge-dot { background: var(--light-blue); }
+    .badge-future    { background: #f0f0f0; color: #666; }
+    .badge-future    .badge-dot { background: var(--gray); }
+
+    /* ── Person card grid ─────────────────────────────────────────── */
+    .person-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+    /* ── Person card ──────────────────────────────────────────────── */
+    .person-card {
+      background: var(--white);
+      border: 1px solid #e4e6ec;
+      border-top: 3px solid var(--royal);
+      padding: 0;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .person-card:hover { box-shadow: 0 4px 20px rgba(0,53,148,0.1); transform: translateY(-2px); }
+    .person-card.gold-border { border-top-color: var(--gold); }
+    .person-card.placeholder { border-style: dashed; border-color: var(--gray); border-top-style: dashed; border-top-color: var(--gray); border-top-width: 2px; opacity: 0.55; }
+
+    .person-card-top { padding: 24px 24px 0; }
+    .person-avatar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .person-avatar {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 800; font-size: 16px;
+      background: var(--royal); color: var(--white);
+    }
+    .person-avatar.gold { background: var(--gold); color: var(--royal); }
+    .person-avatar.blue { background: var(--light-blue); color: var(--royal); }
+    .person-avatar.empty { background: #e8e8e8; color: #999; font-size: 22px; font-weight: 400; }
+
+    .person-name { font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: var(--royal); line-height: 1.2; margin-bottom: 2px; }
+    .person-credentials { font-family: var(--font-sans); font-size: 12px; color: #888; }
+    .person-title { font-family: var(--font-sans); font-size: 12px; color: #555; line-height: 1.45; margin-bottom: 14px; }
+
+    .person-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .person-tag { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+    .tag-primary  { background: var(--royal); color: var(--white); }
+    .tag-active   { background: #e8f5ee; color: #0a5c2e; }
+    .tag-abfm     { background: var(--new-sky); color: var(--royal); }
+    .tag-future   { background: #f0f0f0; color: #777; }
+
+    .person-bio { font-family: var(--font-serif); font-weight: 300; font-size: 13px; line-height: 1.72; color: #3a3a4a; padding: 0 24px; flex: 1; }
+
+    /* Expandable bio */
+    .person-bio-short {}
+    .person-bio-full  { display: none; }
+    .person-card.expanded .person-bio-short { display: none; }
+    .person-card.expanded .person-bio-full  { display: block; }
+
+    .person-card-bottom { padding: 16px 24px 20px; margin-top: auto; }
+    .person-links { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .person-link { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--royal); text-decoration: none; transition: color 0.2s; }
+    .person-link:hover { color: var(--light-blue); }
+    .person-link.external::after { content: ' ↗'; font-size: 10px; }
+
+    .expand-btn {
+      margin-left: auto; font-family: var(--font-sans); font-weight: 700; font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--light-blue);
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .expand-btn:hover { color: var(--royal); }
+
+    /* ── Project band ─────────────────────────────────────────────── */
+    .person-project {
+      background: var(--new-sky);
+      border-top: 1px solid rgba(102,178,227,0.4);
+      padding: 14px 24px 16px;
+      margin-top: 8px;
+    }
+    .person-project-label { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal); margin-bottom: 5px; }
+    .person-project-text  { font-family: var(--font-serif); font-weight: 300; font-size: 12px; line-height: 1.65; color: #2a3a5a; }
+
+    /* ── Add-person placeholder card ─────────────────────────────── */
+    .add-card {
+      border: 2px dashed var(--gray); padding: 36px 24px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; min-height: 200px; background: transparent;
+    }
+    .add-icon { font-size: 28px; color: var(--gray); margin-bottom: 12px; }
+    .add-label { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+    .add-hint  { font-family: var(--font-serif); font-weight: 300; font-size: 12px; color: #bbb; line-height: 1.6; }
+
+    /* ── Future school placeholder ────────────────────────────────── */
+    .future-school-placeholder {
+      border: 1px dashed var(--gray);
+      padding: clamp(28px,4vw,48px) clamp(20px,3vw,40px);
+      text-align: center;
+      background: transparent;
+    }
+    .future-icon { font-size: 24px; color: var(--gray); margin-bottom: 14px; display: block; }
+    .future-title { font-family: var(--font-sans); font-weight: 700; font-size: 15px; color: #aaa; margin-bottom: 8px; }
+    .future-text  { font-family: var(--font-serif); font-weight: 300; font-size: 13px; color: #bbb; line-height: 1.65; max-width: 480px; margin: 0 auto; }
+
+    /* ── Shared footer ────────────────────────────────────────────── */
+    .site-footer { background: var(--royal-dark); padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 36px; color: var(--white); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: var(--font-sans); font-weight: 800; font-size: 28px; color: var(--white); margin-bottom: 6px; }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; line-height: 1.6; }
+    .footer-affil { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+    .footer-col-title { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-family: var(--font-serif); font-weight: 300; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-text { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer-six-schools { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+
+    /* ── Scroll fade ──────────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .school-header { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 63px; left: 0; right: 0; background: var(--royal-dark); padding: 16px 24px 24px; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .nav-links a { display: block; padding: 12px 0; font-size: 14px; }
+      .nav-toggle { display: flex; }
+      .site-nav { position: relative; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+      .person-card { transition: none; }
+    }
+  </style>
+</head>
+
+<body data-page="collaborators">
+
+  <!-- Nav injected by site.js -->
+  <div id="site-nav"></div>
+
+  <!-- ── Page header ────────────────────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="breadcrumb">
+        <a href="index.html">PITTCARE</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Collaborators</span>
+      </div>
+      <h1>Our <span>Collaborators</span></h1>
+      <p class="page-header-lead">PITTCARE is built on active research relationships across the University of Pittsburgh Health Sciences and beyond. This directory grows as collaborations formalize — organized by school, anchored in shared purpose.</p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF MEDICINE — Home school, active collaborators
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="medicine">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Home school</p>
+          <h2 class="school-name">School of Medicine</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-active">
+          <span class="badge-dot"></span> Active
+        </span>
+      </div>
+
+      <div class="person-grid fade-in">
+
+        <!-- ── DBMI: Shyam Visweswaran ───────────────────────────── -->
+        <div class="person-card gold-border" id="visweswaran">
+          <div class="person-card-top">
+            <div class="person-avatar-row">
+              <div class="person-avatar gold">SV</div>
+              <div>
+                <div class="person-name">Shyam Visweswaran</div>
+                <div class="person-credentials">MD, PhD</div>
+              </div>
+            </div>
+            <p class="person-title">
+              Chair &amp; UPMC Endowed Professor of Biomedical Informatics<br>
+              Department of Biomedical Informatics, School of Medicine
+            </p>
+            <div class="person-tags">
+              <span class="person-tag tag-active">Active collaborator</span>
+              <span class="person-tag tag-abfm">ABFM-funded project</span>
+            </div>
+          </div>
+          <p class="person-bio">
+            <span class="person-bio-short">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and holds the UPMC Endowed Chair in Biomedical Informatics. His research spans clinical AI, machine learning, and clinical decision support — with over 200 peer-reviewed publications.</span>
+            <span class="person-bio-full">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and, since February 2026, holds the UPMC Endowed Chair in Biomedical Informatics at the University of Pittsburgh School of Medicine. His research spans clinical artificial intelligence, machine learning, clinical decision support, and precision medicine — with over 200 peer-reviewed publications and more than 100 presentations at local, national, and international venues. He is elected Fellow of the American Medical Informatics Association (FAMIA), Fellow of the American College of Medical Informatics (FACMI), and Fellow of the International Academy of Health Sciences Informatics (FIAHSI). He contributed to the National Academies of Sciences, Engineering, and Medicine consensus report "Rethinking Race and Ethnicity in Biomedical Research" (2025) and serves on the Encoding Equity Inaugural Advisory Committee of the Council of Medical Specialty Societies. His collaboration with the Department of Family Medicine began in 2022.</span>
+          </p>
+          <div class="person-project">
+            <div class="person-project-label">Founding project · American Board of Family Medicine · 2022–present</div>
+            <p class="person-project-text">Building capacity in artificial intelligence and machine learning in primary care — the foundational research partnership from which PITTCARE grows. Funded by the American Board of Family Medicine.</p>
+          </div>
+          <div class="person-card-bottom">
+            <div class="person-links">
+              <a href="https://www.dbmi.pitt.edu" target="_blank" rel="noopener" class="person-link external">Pitt DBMI</a>
+              <a href="https://scholar.google.com/citations?user=i4k8HmEAAAAJ" target="_blank" rel="noopener" class="person-link external">Publications</a>
+              <button class="expand-btn" onclick="toggleBio(this)">Read more ↓</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Add-person placeholder ────────────────────────────── -->
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add collaborator</div>
+          <p class="add-hint">Duplicate the person-card block above and update the fields. Each card is self-contained.</p>
+        </div>
+
+      </div><!-- /person-grid -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF HEALTH AND REHABILITATION SCIENCES — Active partner
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="shrs">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Active partner school</p>
+          <h2 class="school-name">School of Health and Rehabilitation Sciences</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-partner">
+          <span class="badge-dot"></span> Active partner
+        </span>
+      </div>
+
+      <div class="person-grid fade-in">
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add collaborator</div>
+          <p class="add-hint">Add the first SHRS collaborator here. Copy the person-card template from School of Medicine above.</p>
+        </div>
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add collaborator</div>
+          <p class="add-hint">Each card holds: name, credentials, title, tags, bio (expandable), optional project band, and links.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF PUBLIC HEALTH
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="public-health">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Future collaboration</p>
+          <h2 class="school-name">School of Public Health</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-future">
+          <span class="badge-dot"></span> Forming
+        </span>
+      </div>
+
+      <div class="future-school-placeholder fade-in">
+        <span class="future-icon">◎</span>
+        <div class="future-title">Collaborations forming</div>
+        <p class="future-text">Population health, epidemiology, and community health research — natural partners for the Voice of the People Survey and community-level Intelligence-Technology impact studies. Collaborators will appear here as partnerships develop.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF NURSING
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="nursing">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Future collaboration</p>
+          <h2 class="school-name">School of Nursing</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-future">
+          <span class="badge-dot"></span> Forming
+        </span>
+      </div>
+
+      <div class="future-school-placeholder fade-in">
+        <span class="future-icon">◎</span>
+        <div class="future-title">Collaborations forming</div>
+        <p class="future-text">Nursing informatics, care coordination, and the front-line perspective on how Intelligence-Technology tools are experienced by patients and care teams. Collaborators will appear here as partnerships develop.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF PHARMACY
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="pharmacy">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Future collaboration</p>
+          <h2 class="school-name">School of Pharmacy</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-future">
+          <span class="badge-dot"></span> Forming
+        </span>
+      </div>
+
+      <div class="future-school-placeholder fade-in">
+        <span class="future-icon">◎</span>
+        <div class="future-title">Collaborations forming</div>
+        <p class="future-text">Medication management, clinical pharmacology, and the role of Intelligence-Technology in medication safety and shared decision-making in primary care. Collaborators will appear here as partnerships develop.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SCHOOL OF DENTAL MEDICINE
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="collab-school-section" id="dental">
+    <div class="section-inner">
+
+      <div class="school-header fade-in">
+        <div class="school-header-left">
+          <p class="school-eyebrow">Future collaboration</p>
+          <h2 class="school-name">School of Dental Medicine</h2>
+          <p class="school-sub">University of Pittsburgh Health Sciences</p>
+        </div>
+        <span class="school-status-badge badge-future">
+          <span class="badge-dot"></span> Forming
+        </span>
+      </div>
+
+      <div class="future-school-placeholder fade-in">
+        <span class="future-icon">◎</span>
+        <div class="future-title">Collaborations forming</div>
+        <p class="future-text">Oral health as a dimension of whole-person care — integration of dental and primary care Intelligence-Technology systems within the biopsychosocial model. Collaborators will appear here as partnerships develop.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <!-- Footer injected by site.js -->
+  <div id="site-footer"></div>
+
+  <!-- ── Scripts ─────────────────────────────────────────────────── -->
+  <script src="site.js"></script>
+  <script>
+    // Expand/collapse bio
+    function toggleBio(btn) {
+      const card = btn.closest('.person-card');
+      const expanded = card.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Show less ↑' : 'Read more ↓';
+    }
+
+    // Jump-to-school from URL hash on load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    });
+  </script>
+
+</body>
+</html>

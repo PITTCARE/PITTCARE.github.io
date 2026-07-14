@@ -592,6 +592,147 @@
       color: #555;
     }
 
+    /* ── Collaborators section ────────────────────────────────────── */
+    .collabs-section { background: var(--royal); }
+
+    .collab-card {
+      background: rgba(255,255,255,0.06);
+      border-top: 3px solid var(--gold);
+      transition: background 0.2s;
+    }
+
+    .collab-card:hover { background: rgba(255,255,255,0.1); }
+
+    .collab-header { padding: 32px 32px 0; }
+
+    .collab-dept-badge {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--royal);
+      padding: 3px 9px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .collab-dept-name {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .collab-school {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--light-blue);
+      margin-bottom: 14px;
+    }
+
+    .collab-desc {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+      padding: 0 32px 20px;
+    }
+
+    .collab-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 0 32px;
+    }
+
+    .collab-person {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 22px 32px 28px;
+    }
+
+    .collab-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--light-blue);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--royal);
+    }
+
+    .collab-person-name {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .collab-person-title {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--light-blue);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .collab-person-bio {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .collab-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .collab-link:hover { text-decoration: underline; }
+
+    .collab-project {
+      background: rgba(102,178,227,0.1);
+      border-top: 1px solid rgba(102,178,227,0.2);
+      padding: 18px 32px 24px;
+    }
+
+    .collab-project-label {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 8px;
+    }
+
+    .collab-project-text {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+    }
+
     /* ── Node border divider ──────────────────────────────────────── */
     .node-divider {
       display: flex;
@@ -751,6 +892,7 @@
       <li><a href="#the-name">The Name</a></li>
       <li><a href="#focus">Research</a></li>
       <li><a href="#vop">Voice of the People</a></li>
+      <li><a href="#collaborators">Collaborators</a></li>
       <li><a href="#schools">Affiliations</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -961,6 +1103,57 @@
     <div class="nd dim"></div>
   </div>
 
+  <!-- ── Key Collaborators — summary, links to collaborators.html ── -->
+  <section class="collabs-section" id="collaborators" style="padding: var(--section-pad);">
+    <div class="section-inner">
+      <p class="section-label on-dark">Key collaborators</p>
+      <h2 class="section-h2 on-dark fade-in">The partnerships that make PITTCARE possible</h2>
+      <p class="section-lead on-dark" style="margin-bottom:44px;">PITTCARE is built on active research relationships — not aspirational ones. Collaborators span all six University of Pittsburgh Health Sciences schools; the directory below captures who is at work with us today.</p>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap:24px;" class="fade-in">
+
+        <!-- DBMI summary card -->
+        <div class="collab-card">
+          <div class="collab-header">
+            <span class="collab-dept-badge">Active collaboration · Since 2022</span>
+            <div class="collab-dept-name">Department of Biomedical Informatics</div>
+            <div class="collab-school">University of Pittsburgh School of Medicine</div>
+          </div>
+          <p class="collab-desc">Pitt DBMI — where artificial intelligence and data science come together with biology and medicine — provides the informatics and machine learning foundation on which Intelligence-Technology in primary care is built.</p>
+          <div class="collab-divider"></div>
+          <div class="collab-person">
+            <div class="collab-avatar">SV</div>
+            <div>
+              <div class="collab-person-name">Shyam Visweswaran, MD, PhD</div>
+              <div class="collab-person-title">Chair &amp; UPMC Endowed Professor of Biomedical Informatics</div>
+              <p class="collab-person-bio">Collaborating with the Department of Family Medicine since 2022 on an ABFM-funded project to build capacity in AI and ML in primary care — the founding research relationship from which PITTCARE grows.</p>
+              <a href="collaborators.html#visweswaran" class="collab-link">Full profile &amp; project details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory teaser -->
+        <div class="collab-card" style="border-top-color: var(--light-blue); display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:280px; padding:40px 32px; text-align:center;">
+          <div style="font-family:var(--font-sans); font-weight:800; font-size:52px; color:rgba(255,255,255,0.12); margin-bottom:14px; line-height:1;">6</div>
+          <div style="font-family:var(--font-sans); font-weight:700; font-size:12px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;">Schools · Growing network</div>
+          <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; color:rgba(255,255,255,0.42); line-height:1.65; margin-bottom:24px; max-width:260px;">Collaborations across all six Pitt Health Sciences schools are actively forming. The full directory is organized by school and updated as partnerships develop.</p>
+          <a href="collaborators.html" class="btn btn-outline" style="font-size:12px; padding:10px 22px; letter-spacing:0.08em;">View full collaborator directory →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
   <!-- ── School Affiliations ─────────────────────────────────────── -->
   <section class="schools-section" id="schools" style="padding: var(--section-pad);">
     <div class="section-inner">
@@ -1028,6 +1221,7 @@
             <li><a href="#the-name">The Name</a></li>
             <li><a href="#focus">Research Focus Areas</a></li>
             <li><a href="#vop">Voice of the People Survey</a></li>
+            <li><a href="#collaborators">Key Collaborators</a></li>
             <li><a href="#schools">School Affiliations</a></li>
           </ul>
         </div>
@@ -1035,6 +1229,7 @@
           <div class="footer-col-title">Contact</div>
           <ul class="footer-links">
             <li><a href="mailto:pittcare@pitt.edu">pittcare@pitt.edu</a></li>
+            <li><a href="https://www.dbmi.pitt.edu" target="_blank">Dept. of Biomedical Informatics</a></li>
             <li><a href="https://www.dom.pitt.edu/fm" target="_blank">Dept. of Family Medicine</a></li>
             <li><a href="https://www.medschool.pitt.edu" target="_blank">School of Medicine</a></li>
             <li><a href="https://www.healthsciences.pitt.edu" target="_blank">Pitt Health Sciences</a></li>
