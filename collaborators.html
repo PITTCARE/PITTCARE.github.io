@@ -177,6 +177,31 @@
     .person-project-label { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal); margin-bottom: 5px; }
     .person-project-text  { font-family: var(--font-serif); font-weight: 300; font-size: 12px; line-height: 1.65; color: #2a3a5a; }
 
+    /* CCAI second-project band — darker royal to distinguish from ABFM sky band */
+    .person-project.ccai-band {
+      background: #e8eef8;
+      border-top-color: var(--royal);
+    }
+    .person-project.ccai-band .person-project-label { color: #002570; }
+    .person-project.ccai-band .person-project-text  { color: #1a2a4a; }
+
+    .ccai-goals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+      margin-top: 8px;
+    }
+    .ccai-goal {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: #334466;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      line-height: 1.45;
+    }
+    .ccai-goal::before { content: '›'; color: var(--royal); font-weight: 700; flex-shrink: 0; }
+
     /* ── Add-person placeholder card ─────────────────────────────── */
     .add-card {
       border: 2px dashed var(--gray); padding: 36px 24px;
@@ -275,7 +300,7 @@
 
       <div class="person-grid fade-in">
 
-        <!-- ── DBMI: Shyam Visweswaran ───────────────────────────── -->
+        <!-- ── DBMI + CCAI: Shyam Visweswaran ───────────────────────── -->
         <div class="person-card gold-border" id="visweswaran">
           <div class="person-card-top">
             <div class="person-avatar-row">
@@ -292,19 +317,33 @@
             <div class="person-tags">
               <span class="person-tag tag-active">Active collaborator</span>
               <span class="person-tag tag-abfm">ABFM-funded project</span>
+              <span class="person-tag tag-active" style="background:#e8eef8; color:#002570;">CCAI Director</span>
             </div>
           </div>
           <p class="person-bio">
-            <span class="person-bio-short">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and holds the UPMC Endowed Chair in Biomedical Informatics. His research spans clinical AI, machine learning, and clinical decision support — with over 200 peer-reviewed publications.</span>
-            <span class="person-bio-full">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and, since February 2026, holds the UPMC Endowed Chair in Biomedical Informatics at the University of Pittsburgh School of Medicine. His research spans clinical artificial intelligence, machine learning, clinical decision support, and precision medicine — with over 200 peer-reviewed publications and more than 100 presentations at local, national, and international venues. He is elected Fellow of the American Medical Informatics Association (FAMIA), Fellow of the American College of Medical Informatics (FACMI), and Fellow of the International Academy of Health Sciences Informatics (FIAHSI). He contributed to the National Academies of Sciences, Engineering, and Medicine consensus report "Rethinking Race and Ethnicity in Biomedical Research" (2025) and serves on the Encoding Equity Inaugural Advisory Committee of the Council of Medical Specialty Societies. His collaboration with the Department of Family Medicine began in 2022.</span>
+            <span class="person-bio-short">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and holds the UPMC Endowed Chair in Biomedical Informatics. His research spans clinical AI, machine learning, and clinical decision support — with over 200 peer-reviewed publications. He also directs the Center for Clinical Artificial Intelligence (CCAI), which develops, validates, and deploys AI-powered clinical decision support tools at the point of care.</span>
+            <span class="person-bio-full">Dr. Visweswaran is Chair of the Department of Biomedical Informatics and, since February 2026, holds the UPMC Endowed Chair in Biomedical Informatics at the University of Pittsburgh School of Medicine. His research spans clinical artificial intelligence, machine learning, clinical decision support, and precision medicine — with over 200 peer-reviewed publications and more than 100 presentations at local, national, and international venues. He is elected Fellow of the American Medical Informatics Association (FAMIA), Fellow of the American College of Medical Informatics (FACMI), and Fellow of the International Academy of Health Sciences Informatics (FIAHSI). He contributed to the National Academies of Sciences, Engineering, and Medicine consensus report "Rethinking Race and Ethnicity in Biomedical Research" (2025) and serves on the Encoding Equity Inaugural Advisory Committee of the Council of Medical Specialty Societies. He also directs the Center for Clinical Artificial Intelligence (CCAI), whose mission is to develop, validate, and deploy AI-enabled clinical decision support tools — with particular attention to algorithmic fairness, FDA regulatory pathways, and long-term monitoring of deployed algorithms. His collaboration with the Department of Family Medicine began in 2022.</span>
           </p>
           <div class="person-project">
             <div class="person-project-label">Founding project · American Board of Family Medicine · 2022–present</div>
             <p class="person-project-text">Building capacity in artificial intelligence and machine learning in primary care — the foundational research partnership from which PITTCARE grows. Funded by the American Board of Family Medicine.</p>
           </div>
+          <div class="person-project ccai-band">
+            <div class="person-project-label">Center for Clinical Artificial Intelligence (CCAI) · Pitt / UPMC / CMU</div>
+            <p class="person-project-text">Dr. Visweswaran directs the CCAI, a center focused on developing AI algorithms for clinical decision support, validating them for statistical and clinical utility, ensuring algorithmic fairness, and navigating FDA approval as Software as a Medical Device (SaMD). The CCAI's five goals align directly with PITTCARE's research agenda in primary care:</p>
+            <div class="ccai-goals">
+              <div class="ccai-goal">Create AI algorithms to address unmet clinical needs</div>
+              <div class="ccai-goal">Demonstrate internal and external validity</div>
+              <div class="ccai-goal">Ensure algorithmic fairness across age, gender, race, and SES</div>
+              <div class="ccai-goal">Obtain FDA approval for Software as a Medical Device</div>
+              <div class="ccai-goal">Monitor robustness after deployment over time and across populations</div>
+              <div class="ccai-goal">Human-in-the-loop AI for monitoring, risk, and workflow efficiency</div>
+            </div>
+          </div>
           <div class="person-card-bottom">
             <div class="person-links">
               <a href="https://www.dbmi.pitt.edu" target="_blank" rel="noopener" class="person-link external">Pitt DBMI</a>
+              <a href="https://www.ccai.thevislab.com/doku.php?id=start" target="_blank" rel="noopener" class="person-link external">CCAI</a>
               <a href="https://scholar.google.com/citations?user=i4k8HmEAAAAJ" target="_blank" rel="noopener" class="person-link external">Publications</a>
               <button class="expand-btn" onclick="toggleBio(this)">Read more ↓</button>
             </div>
