@@ -40,50 +40,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Nav ──────────────────────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--royal);
-      padding: 0 clamp(20px,5vw,80px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      border-bottom: 3px solid var(--gold);
-    }
-
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-brand span { color: var(--gold); }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 14px;
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
     /* ── Six-node motif (signature element) ──────────────────────── */
     .nodes {
       display: flex;
@@ -751,104 +707,6 @@
 
     .node-divider .nd.dim { opacity: 0.25; }
 
-    /* ── Contact / footer ─────────────────────────────────────────── */
-    .footer-section {
-      background: var(--royal-dark);
-      padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 36px;
-      color: var(--white);
-    }
-
-    .footer-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-    }
-
-    .footer-brand-name {
-      font-family: var(--font-sans);
-      font-weight: 800;
-      font-size: 28px;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-
-    .footer-brand-name span { color: var(--gold); }
-
-    .footer-tagline {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 300;
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .footer-affil {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.8;
-    }
-
-    .footer-col-title {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-bottom-text {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .pitt-hs-schools {
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 10px;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.3);
-    }
-
     /* ── Scroll-triggered fade ────────────────────────────────────── */
     .fade-in {
       opacity: 0;
@@ -867,13 +725,11 @@
       .focus-grid   { grid-template-columns: 1fr; }
       .vop-grid     { grid-template-columns: 1fr; }
       .vm-grid      { grid-template-columns: 1fr; gap: 24px; }
-      .footer-top   { grid-template-columns: 1fr; gap: 32px; }
       .hero-node-strip { display: none; }
     }
 
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr 1fr; }
-      .nav-links    { display: none; }
       .hero h1      { font-size: 38px; }
     }
 
@@ -882,22 +738,10 @@
     }
   </style>
 </head>
-<body>
+<body data-page="home">
 
-  <!-- ── Navigation ──────────────────────────────────────────────── -->
-  <nav class="nav">
-    <a href="#" class="nav-brand">PITT<span>CARE</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#the-name">The Name</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="#vop">Voice of the People</a></li>
-      <li><a href="#collaborators">Collaborators</a></li>
-      <li><a href="advisory-board.html">Advisory Board</a></li>
-      <li><a href="#schools">Affiliations</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Nav injected by site.js -->
+  <div id="site-nav"></div>
 
   <!-- ── Hero ────────────────────────────────────────────────────── -->
   <section class="hero" id="top">
@@ -1201,62 +1045,11 @@
     </div>
   </section>
 
-  <!-- ── Contact / Footer ────────────────────────────────────────── -->
-  <footer class="footer-section" id="contact">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand-name">PITT<span>CARE</span></div>
-          <p class="footer-tagline">Center for Primary Care Intelligence-Technology<br>and Transformation</p>
-          <p class="footer-affil">
-            Department of Family Medicine<br>
-            School of Medicine<br>
-            University of Pittsburgh Health Sciences<br>
-            pittcare.github.io
-          </p>
-        </div>
-        <div>
-          <div class="footer-col-title">Quick Links</div>
-          <ul class="footer-links">
-            <li><a href="#about">About PITTCARE</a></li>
-            <li><a href="#the-name">The Name</a></li>
-            <li><a href="#focus">Research Focus Areas</a></li>
-            <li><a href="#vop">Voice of the People Survey</a></li>
-            <li><a href="#collaborators">Key Collaborators</a></li>
-            <li><a href="#schools">School Affiliations</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="footer-col-title">Contact</div>
-          <ul class="footer-links">
-            <li><a href="mailto:pittcare@pitt.edu">pittcare@pitt.edu</a></li>
-            <li><a href="https://www.dbmi.pitt.edu" target="_blank">Dept. of Biomedical Informatics</a></li>
-            <li><a href="https://www.dom.pitt.edu/fm" target="_blank">Dept. of Family Medicine</a></li>
-            <li><a href="https://www.medschool.pitt.edu" target="_blank">School of Medicine</a></li>
-            <li><a href="https://www.healthsciences.pitt.edu" target="_blank">Pitt Health Sciences</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-bottom-text">© 2025 University of Pittsburgh PITTCARE. University of Pittsburgh Health Sciences.</p>
-        <p class="pitt-hs-schools">Dental Medicine + Health and Rehabilitation Sciences + Medicine + Nursing + Pharmacy + Public Health</p>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer injected by site.js -->
+  <div id="site-footer"></div>
 
+  <script src="site.js"></script>
   <script>
-    // Scroll-triggered fade-in
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(el => {
-        if (el.isIntersecting) {
-          el.target.classList.add('visible');
-          observer.unobserve(el.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
     // Animate the hero nodes on load
     const heroNodes = document.querySelectorAll('.hero-node-strip .node');
     heroNodes.forEach((n, i) => {
