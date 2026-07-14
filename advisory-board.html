@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>External Advisory Board — PITTCARE</title>
+  <meta name="description" content="PITTCARE's External Advisory Board — independent experts who guide the center's research direction through annual engagement and the center's summer meeting.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --royal:      #003594;
+      --royal-dark: #002570;
+      --gold:       #ffb81c;
+      --light-blue: #66b2e3;
+      --new-sky:    #dbeeff;
+      --white:      #ffffff;
+      --gray:       #c8c9c7;
+      --gray-light: #f4f6fa;
+      --text-body:  #1a1a2e;
+      --font-sans:  'Roboto', sans-serif;
+      --font-serif: 'Merriweather', serif;
+      --max-w:      1140px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text-body); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* ── Shared nav ───────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--royal);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; border-bottom: 3px solid var(--gold);
+    }
+    .nav-brand { font-family: var(--font-sans); font-weight: 800; font-size: 22px; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: var(--font-sans); font-weight: 500; font-size: 13px; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; padding: 4px 0; border-bottom: 2px solid transparent; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── Page header ──────────────────────────────────────────────── */
+    .page-header {
+      background: var(--royal);
+      padding: clamp(48px,7vw,90px) clamp(20px,5vw,80px) clamp(40px,6vw,72px);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='60' cy='0' r='20'/%3E%3Ccircle cx='0' cy='60' r='20'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-header-inner { max-width: var(--max-w); margin: 0 auto; position: relative; }
+    .breadcrumb { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--light-blue); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .page-header h1 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(32px,4.5vw,56px); line-height: 1.0; color: var(--white); margin-bottom: 16px; }
+    .page-header h1 span { color: var(--gold); }
+    .page-header-lead { font-family: var(--font-serif); font-weight: 300; font-size: clamp(14px,1.5vw,17px); color: rgba(255,255,255,0.78); line-height: 1.7; max-width: 680px; }
+
+    /* ── Node divider ─────────────────────────────────────────────── */
+    .node-divider { display: flex; justify-content: center; gap: 16px; padding: 22px 0; background: var(--royal); }
+    .node-divider .nd { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+    .node-divider .nd.dim { opacity: 0.22; }
+
+    /* ── Section ──────────────────────────────────────────────────── */
+    .section { padding: clamp(52px,7vw,90px) clamp(20px,5vw,80px); }
+    .section.bg-white    { background: var(--white); }
+    .section.bg-light    { background: var(--gray-light); }
+    .section.bg-royal    { background: var(--royal); }
+    .section.bg-sky      { background: var(--new-sky); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .eyebrow { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--light-blue); }
+    .eyebrow.on-dark { color: var(--gold); }
+    .eyebrow.on-dark::before { background: var(--gold); }
+
+    .section-h2 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px,3.5vw,42px); line-height: 1.05; color: var(--royal); margin-bottom: 12px; }
+    .section-h2.on-dark { color: var(--white); }
+    .section-lead { font-family: var(--font-serif); font-weight: 300; font-size: clamp(14px,1.4vw,16px); line-height: 1.8; color: #3a3a4a; max-width: 700px; }
+    .section-lead.on-dark { color: rgba(255,255,255,0.8); }
+
+    /* ── How it works band ────────────────────────────────────────── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .how-card {
+      background: var(--white);
+      border-top: 4px solid var(--gold);
+      padding: 28px 28px 32px;
+    }
+    .how-number {
+      font-family: var(--font-sans); font-weight: 800; font-size: 40px;
+      color: rgba(0,53,148,0.1); line-height: 1; margin-bottom: 12px;
+    }
+    .how-title { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--royal); margin-bottom: 10px; }
+    .how-body  { font-family: var(--font-serif); font-weight: 300; font-size: 14px; line-height: 1.75; color: #444; }
+
+    /* ── Member grid ──────────────────────────────────────────────── */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Member card ──────────────────────────────────────────────── */
+    .member-card {
+      background: var(--white);
+      border: 1px solid #e4e6ec;
+      border-top: 3px solid var(--royal);
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .member-card:hover { box-shadow: 0 4px 20px rgba(0,53,148,0.1); transform: translateY(-2px); }
+    .member-card.placeholder { border-style: dashed; border-color: var(--gray); border-top-style: dashed; border-top-color: var(--gray); border-top-width: 2px; opacity: 0.55; pointer-events: none; }
+
+    .member-card-top { padding: 24px 24px 0; }
+    .member-avatar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .member-avatar {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 800; font-size: 17px;
+      background: var(--royal); color: var(--white);
+    }
+    .member-avatar.placeholder-av { background: #e4e6ec; color: #aaa; font-size: 22px; font-weight: 300; }
+    .member-name { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--royal); line-height: 1.2; margin-bottom: 2px; }
+    .member-credentials { font-family: var(--font-sans); font-size: 12px; color: #888; }
+    .member-title { font-family: var(--font-sans); font-size: 12px; color: #555; line-height: 1.45; margin-bottom: 14px; }
+
+    .member-expertise { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .exp-tag { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 8px; background: var(--new-sky); color: var(--royal); }
+
+    .member-bio { font-family: var(--font-serif); font-weight: 300; font-size: 13px; line-height: 1.72; color: #3a3a4a; padding: 0 24px; flex: 1; }
+
+    .member-card-bottom { padding: 16px 24px 20px; margin-top: auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .member-link { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--royal); text-decoration: none; transition: color 0.2s; }
+    .member-link:hover { color: var(--light-blue); }
+
+    .member-role-badge {
+      font-family: var(--font-sans); font-weight: 700; font-size: 9px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 8px; color: var(--royal); background: rgba(255,184,28,0.2);
+    }
+
+    /* ── Placeholder add card ─────────────────────────────────────── */
+    .add-card {
+      border: 2px dashed var(--gray); padding: 36px 24px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; min-height: 180px; background: transparent;
+    }
+    .add-icon  { font-size: 26px; color: var(--gray); margin-bottom: 10px; }
+    .add-label { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 6px; }
+    .add-hint  { font-family: var(--font-serif); font-weight: 300; font-size: 12px; color: #bbb; line-height: 1.6; }
+
+    /* ── Annual meeting band ──────────────────────────────────────── */
+    .meeting-band {
+      background: var(--royal);
+      padding: clamp(40px,5vw,64px) clamp(20px,5vw,80px);
+    }
+    .meeting-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .meeting-h { font-family: var(--font-sans); font-weight: 800; font-size: clamp(22px,3vw,34px); color: var(--white); margin-bottom: 12px; line-height: 1.1; }
+    .meeting-h span { color: var(--gold); }
+    .meeting-p { font-family: var(--font-serif); font-weight: 300; font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .meeting-detail {
+      background: rgba(255,255,255,0.06);
+      border-top: 3px solid var(--gold);
+      padding: 22px 24px;
+    }
+    .meeting-detail-label { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .meeting-detail-text  { font-family: var(--font-serif); font-weight: 300; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.8); }
+
+    /* ── Shared footer ────────────────────────────────────────────── */
+    .site-footer { background: var(--royal-dark); padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 36px; color: var(--white); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: var(--font-sans); font-weight: 800; font-size: 28px; color: var(--white); margin-bottom: 6px; }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; line-height: 1.6; }
+    .footer-affil { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+    .footer-col-title { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-family: var(--font-serif); font-weight: 300; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-text { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer-six-schools { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+
+    /* ── Fade in ──────────────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .meeting-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 63px; left: 0; right: 0; background: var(--royal-dark); padding: 16px 24px 24px; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .nav-links a  { display: block; padding: 12px 0; font-size: 14px; }
+      .nav-toggle { display: flex; }
+      .site-nav { position: relative; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+      .member-card { transition: none; }
+    }
+  </style>
+</head>
+
+<body data-page="advisory-board">
+
+  <div id="site-nav"></div>
+
+  <!-- ── Page header ────────────────────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="breadcrumb">
+        <a href="index.html">PITTCARE</a>
+        <span style="opacity:0.4">›</span>
+        <span>External Advisory Board</span>
+      </div>
+      <h1>External <span>Advisory Board</span></h1>
+      <p class="page-header-lead">Independent experts from across medicine, technology, health policy, and community health who provide strategic guidance to PITTCARE — through annual direct engagement with the center director and participation in the center's annual summer meeting.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       HOW THE BOARD WORKS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-light">
+    <div class="section-inner">
+      <p class="eyebrow">How the board works</p>
+      <h2 class="section-h2">Guidance through relationship, not just governance</h2>
+      <p class="section-lead">PITTCARE's External Advisory Board is structured around two simple commitments: a personal conversation each year and a collective gathering each summer. No committees, no bureaucracy — just sustained, expert perspective from people who care about getting Intelligence-Technology in primary care right.</p>
+
+      <div class="how-grid fade-in">
+        <div class="how-card">
+          <div class="how-number">01</div>
+          <div class="how-title">Annual 1:1 conversation</div>
+          <p class="how-body">Each advisory board member meets individually with the PITTCARE center director once per year. These conversations are deliberately open — a chance to share perspective, raise concerns, and offer guidance outside of any formal agenda. The relationship is the mechanism.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number">02</div>
+          <div class="how-title">Annual summer meeting</div>
+          <p class="how-body">The full board convenes at the PITTCARE annual meeting each summer. Members hear from center researchers, engage with the Voice of the People Survey findings, and provide collective guidance on the center's research direction, priorities, and emerging questions.</p>
+        </div>
+        <div class="how-card">
+          <div class="how-number">03</div>
+          <div class="how-title">Independence by design</div>
+          <p class="how-body">Advisory board members are external to the University of Pittsburgh. Their value comes from their distance as much as their expertise — they can say what internal colleagues cannot, and they bring perspectives from clinical practice, policy, industry, and community that the center's research must ultimately serve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BOARD MEMBERS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-white" id="members">
+    <div class="section-inner">
+      <p class="eyebrow">Board members</p>
+      <h2 class="section-h2" style="margin-bottom:12px;">Current advisory board</h2>
+      <p class="section-lead" style="margin-bottom:40px;">The advisory board is being assembled. Members are selected for depth of experience and diversity of perspective — across clinical medicine, biomedical informatics, health policy, community health, and the patient experience of AI in care.</p>
+
+      <div class="member-grid fade-in">
+
+        <!-- ── Albert Einstein — placeholder ───────────────────────
+             Remove this card and replace with the real member.
+             Copy the card structure below for each new member.
+        ──────────────────────────────────────────────────────────── -->
+        <div class="member-card">
+          <div class="member-card-top">
+            <div class="member-avatar-row">
+              <div class="member-avatar">AE</div>
+              <div>
+                <div class="member-name">Albert Einstein</div>
+                <div class="member-credentials">PhD</div>
+              </div>
+            </div>
+            <p class="member-title">
+              Professor of Theoretical Physics<br>
+              Institute for Advanced Study, Princeton
+            </p>
+            <div class="member-expertise">
+              <span class="exp-tag">Theoretical Physics</span>
+              <span class="exp-tag">Complex Systems</span>
+              <span class="exp-tag">Scientific Ethics</span>
+            </div>
+          </div>
+          <p class="member-bio">A placeholder advisory board member. Replace this card with a real member by updating the initials, name, credentials, title, expertise tags, and bio. The card structure is self-contained — duplicate it for each new member added to the board.</p>
+          <div class="member-card-bottom">
+            <span class="member-role-badge">Advisory Board</span>
+          </div>
+        </div>
+
+        <!-- ── Add member placeholder cards ───────────────────────── -->
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add board member</div>
+          <p class="add-hint">Duplicate the member-card above. Update initials, name, credentials, title, expertise tags, bio, and optional external link.</p>
+        </div>
+
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add board member</div>
+          <p class="add-hint">The board is designed to represent diverse perspectives: clinical practice, informatics, health policy, community health, and the patient experience of AI.</p>
+        </div>
+
+        <div class="add-card">
+          <div class="add-icon">＋</div>
+          <div class="add-label">Add board member</div>
+          <p class="add-hint">Each member card can include: expertise tags, a short bio, and an optional external profile or institutional link.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ANNUAL MEETING
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="meeting-band">
+    <div class="meeting-inner">
+      <div>
+        <p style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.13em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Annual event</p>
+        <h3 class="meeting-h">PITTCARE <span>Annual Meeting</span></h3>
+        <p class="meeting-p" style="margin-bottom:16px;">Held each summer, the PITTCARE annual meeting brings together the external advisory board, research faculty, collaborators, and invited guests for a day of presentation, discussion, and strategic reflection.</p>
+        <p class="meeting-p">The meeting serves as the center's most visible accountability moment — where the Voice of the People Survey findings are presented, active research is shared, and the advisory board offers its collective guidance on what the center should prioritize in the year ahead.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="meeting-detail">
+          <div class="meeting-detail-label">Frequency</div>
+          <p class="meeting-detail-text">Annually, each summer. Advisory board members are expected to attend or participate remotely.</p>
+        </div>
+        <div class="meeting-detail">
+          <div class="meeting-detail-label">Format</div>
+          <p class="meeting-detail-text">Research presentations, Voice of the People Survey report, open discussion, and closed advisory session with the center director and board members.</p>
+        </div>
+        <div class="meeting-detail">
+          <div class="meeting-detail-label">Who attends</div>
+          <p class="meeting-detail-text">External advisory board, PITTCARE research faculty and staff, collaborators from Pitt Health Sciences and partner institutions, and invited guests from the broader primary care and IT community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="site.js"></script>
+</body>
+</html>

@@ -9,13 +9,14 @@
   const currentPage = document.body.getAttribute('data-page') || '';
 
   const NAV_LINKS = [
-    { href: 'index.html',         label: 'Home',                 id: 'home' },
-    { href: 'index.html#about',   label: 'About',                id: 'about' },
-    { href: 'research.html',      label: 'Research',             id: 'research' },
-    { href: 'index.html#vop',     label: 'Voice of the People',  id: 'vop' },
-    { href: 'collaborators.html', label: 'Collaborators',        id: 'collaborators' },
-    { href: 'index.html#schools', label: 'Affiliations',         id: 'affiliations' },
-    { href: 'index.html#contact', label: 'Contact',              id: 'contact' },
+    { href: 'index.html',           label: 'Home',                 id: 'home' },
+    { href: 'index.html#about',     label: 'About',                id: 'about' },
+    { href: 'research.html',        label: 'Research',             id: 'research' },
+    { href: 'index.html#vop',       label: 'Voice of the People',  id: 'vop' },
+    { href: 'collaborators.html',   label: 'Collaborators',        id: 'collaborators' },
+    { href: 'advisory-board.html',  label: 'Advisory Board',       id: 'advisory-board' },
+    { href: 'index.html#schools',   label: 'Affiliations',         id: 'affiliations' },
+    { href: 'index.html#contact',   label: 'Contact',              id: 'contact' },
   ];
 
   const navHTML = `
@@ -52,6 +53,7 @@
           <li><a href="research.html">Research &amp; Projects</a></li>
           <li><a href="index.html#vop">Voice of the People Survey</a></li>
           <li><a href="collaborators.html">Key Collaborators</a></li>
+          <li><a href="advisory-board.html">External Advisory Board</a></li>
           <li><a href="index.html#schools">School Affiliations</a></li>
         </ul>
       </div>
