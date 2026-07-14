@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — PITTCARE</title>
+  <meta name="description" content="PITTCARE research faculty and projects — applying Intelligence-Technology in primary care.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --royal:      #003594;
+      --royal-dark: #002570;
+      --gold:       #ffb81c;
+      --light-blue: #66b2e3;
+      --new-sky:    #dbeeff;
+      --white:      #ffffff;
+      --gray:       #c8c9c7;
+      --gray-light: #f4f6fa;
+      --text-body:  #1a1a2e;
+      --font-sans:  'Roboto', sans-serif;
+      --font-serif: 'Merriweather', serif;
+      --max-w:      1140px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text-body); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+    /* ── Shared nav ───────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--royal);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; border-bottom: 3px solid var(--gold);
+    }
+    .nav-brand { font-family: var(--font-sans); font-weight: 800; font-size: 22px; color: var(--white); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-family: var(--font-sans); font-weight: 500; font-size: 13px; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; padding: 4px 0; border-bottom: 2px solid transparent; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── Page header ──────────────────────────────────────────────── */
+    .page-header {
+      background: var(--royal);
+      padding: clamp(48px,7vw,90px) clamp(20px,5vw,80px) clamp(40px,6vw,72px);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='0' cy='0' r='20'/%3E%3Ccircle cx='60' cy='0' r='20'/%3E%3Ccircle cx='0' cy='60' r='20'/%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-header-inner { max-width: var(--max-w); margin: 0 auto; position: relative; }
+    .breadcrumb { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .breadcrumb a { color: var(--light-blue); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .page-header h1 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(36px,5vw,62px); line-height: 1.0; color: var(--white); margin-bottom: 16px; }
+    .page-header h1 span { color: var(--gold); }
+    .page-header-lead { font-family: var(--font-serif); font-weight: 300; font-size: clamp(14px,1.5vw,17px); color: rgba(255,255,255,0.78); line-height: 1.7; max-width: 640px; }
+
+    /* ── Section primitives ───────────────────────────────────────── */
+    .section { padding: clamp(52px,7vw,90px) clamp(20px,5vw,80px); }
+    .section.bg-white    { background: var(--white); }
+    .section.bg-light    { background: var(--gray-light); }
+    .section.bg-sky      { background: var(--new-sky); }
+    .section.bg-royal    { background: var(--royal); }
+    .section-inner       { max-width: var(--max-w); margin: 0 auto; }
+
+    .eyebrow { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--light-blue); }
+    .eyebrow.on-dark { color: var(--gold); }
+    .eyebrow.on-dark::before { background: var(--gold); }
+
+    .section-h2 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(28px,4vw,46px); line-height: 1.05; color: var(--royal); margin-bottom: 14px; }
+    .section-h2.on-dark { color: var(--white); }
+
+    .section-lead { font-family: var(--font-serif); font-weight: 300; font-size: clamp(14px,1.4vw,16px); line-height: 1.8; color: #3a3a4a; max-width: 680px; }
+    .section-lead.on-dark { color: rgba(255,255,255,0.8); }
+
+    /* ── Node divider ─────────────────────────────────────────────── */
+    .node-divider { display: flex; justify-content: center; gap: 16px; padding: 22px 0; background: var(--royal); }
+    .node-divider .nd { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+    .node-divider .nd.dim { opacity: 0.22; }
+
+    /* ── Faculty card ─────────────────────────────────────────────── */
+    .faculty-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .faculty-portrait {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--royal) 0%, var(--light-blue) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 800; font-size: 52px;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .faculty-portrait::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+      background: var(--gold);
+    }
+    .faculty-name { font-family: var(--font-sans); font-weight: 800; font-size: clamp(24px,3vw,34px); color: var(--royal); margin-bottom: 4px; line-height: 1.1; }
+    .faculty-credentials { font-family: var(--font-sans); font-size: 14px; color: #888; margin-bottom: 4px; }
+    .faculty-title { font-family: var(--font-sans); font-size: 14px; color: var(--light-blue); font-weight: 500; margin-bottom: 20px; line-height: 1.4; }
+
+    .research-areas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .ra-tag { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; }
+    .ra-tag.primary { background: var(--royal); color: var(--white); }
+    .ra-tag.blue    { background: var(--new-sky); color: var(--royal); }
+    .ra-tag.gold    { background: rgba(255,184,28,0.15); color: #7a5200; }
+
+    .faculty-bio-block { display: flex; flex-direction: column; gap: 14px; }
+    .faculty-bio-block p { font-family: var(--font-serif); font-weight: 300; font-size: 15px; line-height: 1.8; color: #333; }
+
+    .faculty-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+    .faculty-link { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--royal); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: border-color 0.2s; }
+    .faculty-link:hover { border-bottom-color: var(--royal); }
+    .faculty-link.gold { color: #7a5200; }
+
+    /* ── CCES feature section ─────────────────────────────────────── */
+    .cces-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px; align-items: end;
+      margin-bottom: 40px;
+    }
+    .cces-badge {
+      font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      background: var(--gold); color: var(--royal);
+      padding: 5px 12px; display: inline-block; margin-bottom: 10px;
+    }
+    .cces-title { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px,3.5vw,42px); line-height: 1.05; color: var(--white); }
+    .cces-title em { font-style: normal; color: var(--gold); }
+    .cces-subtitle { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: 15px; color: rgba(255,255,255,0.65); margin-top: 6px; }
+    .cces-external-btn {
+      font-family: var(--font-sans); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: var(--gold); color: var(--royal);
+      padding: 12px 22px; text-decoration: none; display: inline-block;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .cces-external-btn:hover { background: #e8a510; }
+
+    /* What it does — 4 bullet points */
+    .cces-what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .cces-what-item {
+      background: rgba(255,255,255,0.06);
+      border-left: 3px solid var(--gold);
+      padding: 18px 20px;
+    }
+    .cces-what-item p { font-family: var(--font-serif); font-weight: 300; font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.82); }
+
+    /* How it works — 4 steps */
+    .cces-steps-label { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .cces-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-bottom: 48px; }
+    .cces-step {
+      padding: 24px 20px 28px;
+      background: rgba(255,255,255,0.05);
+      position: relative;
+    }
+    .cces-step:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -12px; top: 32px;
+      font-size: 20px; color: var(--gold); opacity: 0.6; z-index: 1;
+    }
+    .cces-step-num {
+      font-family: var(--font-sans); font-weight: 800; font-size: 32px;
+      color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 10px;
+    }
+    .cces-step-title { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: var(--white); margin-bottom: 8px; }
+    .cces-step-desc  { font-family: var(--font-serif); font-weight: 300; font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.65); }
+
+    /* ── Clinical examples ────────────────────────────────────────── */
+    .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .example-card { background: var(--white); border-top: 4px solid var(--royal); padding: 0; }
+    .example-card:nth-child(2) { border-top-color: var(--light-blue); }
+    .example-header { padding: 24px 28px 16px; }
+    .example-label { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 8px; }
+    .example-title { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: var(--royal); line-height: 1.3; margin-bottom: 10px; }
+    .example-question { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: 13px; color: #555; line-height: 1.65; padding: 12px 16px; background: var(--gray-light); margin: 0 28px 16px; border-left: 3px solid var(--light-blue); }
+    .example-body { padding: 0 28px; }
+    .example-finding { font-family: var(--font-serif); font-weight: 300; font-size: 14px; line-height: 1.75; color: #333; margin-bottom: 14px; }
+
+    .example-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .example-stat { background: var(--new-sky); padding: 14px 12px; text-align: center; }
+    .example-stat-num { font-family: var(--font-sans); font-weight: 800; font-size: 22px; color: var(--royal); line-height: 1; margin-bottom: 4px; }
+    .example-stat-label { font-family: var(--font-sans); font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: #556; }
+
+    .example-caveat { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: 12px; color: #888; line-height: 1.6; padding: 12px 28px 24px; border-top: 1px solid #eee; margin-top: 8px; }
+
+    /* ── Question types ───────────────────────────────────────────── */
+    .q-types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; }
+    .q-type {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--white); border: 1px solid #e4e6ec;
+      border-left: 3px solid var(--royal); padding: 16px 18px;
+    }
+    .q-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .q-text { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: 14px; line-height: 1.65; color: #333; }
+
+    /* ── CCES team strip ──────────────────────────────────────────── */
+    .team-strip { background: rgba(255,255,255,0.05); border-top: 1px solid rgba(255,255,255,0.1); padding: 28px 0 0; margin-top: 48px; }
+    .team-strip-label { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .team-members { display: flex; flex-wrap: wrap; gap: 10px; }
+    .team-member {
+      font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.07); padding: 6px 14px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .team-member.pitt { border-left: 2px solid var(--gold); }
+    .team-member.external { border-left: 2px solid var(--light-blue); opacity: 0.8; }
+    .team-inst { font-size: 10px; color: rgba(255,255,255,0.4); margin-left: 2px; }
+
+    /* ── Future project placeholder ───────────────────────────────── */
+    .future-project {
+      border: 2px dashed var(--gray);
+      padding: clamp(32px,5vw,56px) clamp(24px,3vw,40px);
+      text-align: center; background: transparent; margin-top: 24px;
+    }
+    .future-project-icon  { font-size: 28px; color: var(--gray); margin-bottom: 14px; display: block; }
+    .future-project-title { font-family: var(--font-sans); font-weight: 700; font-size: 16px; color: #aaa; margin-bottom: 8px; }
+    .future-project-text  { font-family: var(--font-serif); font-weight: 300; font-size: 13px; color: #bbb; line-height: 1.65; max-width: 480px; margin: 0 auto; }
+
+    /* ── Submit CTA ───────────────────────────────────────────────── */
+    .cta-strip {
+      background: var(--new-sky);
+      padding: 36px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap; margin-top: 0;
+    }
+    .cta-text {}
+    .cta-label { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal); margin-bottom: 6px; }
+    .cta-body  { font-family: var(--font-serif); font-weight: 300; font-size: 15px; color: #1a2a4a; line-height: 1.55; }
+    .cta-btn {
+      font-family: var(--font-sans); font-weight: 700; font-size: 13px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--royal); color: var(--white);
+      padding: 14px 28px; text-decoration: none; display: inline-block;
+      white-space: nowrap; flex-shrink: 0; transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--royal-dark); }
+
+    /* ── Shared footer ────────────────────────────────────────────── */
+    .site-footer { background: var(--royal-dark); padding: clamp(48px,6vw,80px) clamp(20px,5vw,80px) 36px; color: var(--white); }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: var(--font-sans); font-weight: 800; font-size: 28px; color: var(--white); margin-bottom: 6px; }
+    .footer-brand-name span { color: var(--gold); }
+    .footer-tagline { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; line-height: 1.6; }
+    .footer-affil { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+    .footer-col-title { font-family: var(--font-sans); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-family: var(--font-serif); font-weight: 300; font-size: 14px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom-text { font-family: var(--font-sans); font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer-six-schools { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); }
+
+    /* ── Fade-in ──────────────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .faculty-card         { grid-template-columns: 1fr; }
+      .faculty-portrait     { width: 120px; height: 120px; font-size: 36px; }
+      .cces-steps           { grid-template-columns: 1fr 1fr; }
+      .cces-step:nth-child(2)::after { display: none; }
+      .examples-grid        { grid-template-columns: 1fr; }
+      .cces-header          { grid-template-columns: 1fr; }
+      .footer-top           { grid-template-columns: 1fr; gap: 32px; }
+      .cces-what-grid       { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 63px; left: 0; right: 0; background: var(--royal-dark); padding: 16px 24px 24px; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .nav-links a  { display: block; padding: 12px 0; font-size: 14px; }
+      .nav-toggle { display: flex; }
+      .site-nav { position: relative; }
+      .cces-steps { grid-template-columns: 1fr; }
+      .cces-step::after { display: none !important; }
+      .example-stats { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+
+<body data-page="research">
+
+  <div id="site-nav"></div>
+
+  <!-- ── Page header ────────────────────────────────────────────── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="breadcrumb">
+        <a href="index.html">PITTCARE</a>
+        <span style="opacity:0.4">›</span>
+        <span>Research</span>
+      </div>
+      <h1>Research at <span>PITTCARE</span></h1>
+      <p class="page-header-lead">Generating, translating, and disseminating evidence on the application of Intelligence-Technology in primary care — built with the people it serves, grounded in the values of family medicine.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       RESEARCH FACULTY
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-white" id="faculty">
+    <div class="section-inner">
+      <p class="eyebrow">Research faculty</p>
+      <h2 class="section-h2" style="margin-bottom:40px;">Meet the researchers</h2>
+
+      <div class="faculty-card fade-in">
+        <div>
+          <div class="faculty-portrait">OK</div>
+        </div>
+        <div>
+          <div class="faculty-name">Olga V. Kravchenko</div>
+          <div class="faculty-credentials">MS, PhD</div>
+          <div class="faculty-title">
+            Assistant Professor, Department of Family Medicine<br>
+            University of Pittsburgh School of Medicine
+          </div>
+
+          <div class="research-areas">
+            <span class="ra-tag primary">AI / ML in Primary Care</span>
+            <span class="ra-tag blue">Clinical Decision Support</span>
+            <span class="ra-tag blue">EHR Analytics</span>
+            <span class="ra-tag blue">Large-Scale EHR Datasets</span>
+            <span class="ra-tag gold">AI Ethics &amp; Fairness</span>
+            <span class="ra-tag gold">Biomedical Informatics</span>
+          </div>
+
+          <div class="faculty-bio-block">
+            <p>Dr. Kravchenko is the primary research faculty of PITTCARE. Her work focuses on the practical application of artificial intelligence and machine learning in family medicine and primary care — with a consistent emphasis on translation: ensuring that methods developed in research reach real clinicians and real patients.</p>
+            <p>Her research spans three interconnected areas. First, developing practical AI/ML and statistical models that can be translated into clinical settings — particularly in the family medicine and primary care domains. Second, creating analytical tools that inform clinical decision support by leveraging electronic health records to extract patient-specific information and contextualize clinical alerts. Third, translational research using large-scale EHR datasets including the NCATS-funded National COVID Cohort Collaborative (N3C), the NIH-funded All of Us program, and the ENACT Network.</p>
+            <p>Her most recent interest is AI ethics — exploring data responsibility, algorithmic fairness, the misuse of technology, safe integration of AI into clinical practice, long-term monitoring, and accountability. This thread connects directly to PITTCARE's Voice of the People Survey: the question of who gets to shape how Intelligence-Technology enters the exam room.</p>
+            <p>Dr. Kravchenko holds a PhD in Chemistry from the University of British Columbia and completed an NLM postdoctoral fellowship at the Pitt Department of Biomedical Informatics — the same department that provides PITTCARE's foundational informatics partnership through Dr. Visweswaran.</p>
+          </div>
+
+          <div class="faculty-links" style="margin-top:20px;">
+            <a href="https://www.familymedicine.pitt.edu/people/olga-v-kravchenko-ms-phd" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
+            <a href="https://scholar.google.com/citations?user=oRwgqs4AAAAJ" target="_blank" rel="noopener" class="faculty-link">Publications ↗</a>
+            <a href="mailto:kravchen@pitt.edu" class="faculty-link gold">kravchen@pitt.edu</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       CCES PROJECT
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-royal" id="cces">
+    <div class="section-inner">
+
+      <div class="cces-header">
+        <div>
+          <span class="cces-badge">Active project · ENACT Network</span>
+          <div class="cces-title">Concierge Clinical<br>Evidence Service <em>(CCES)</em></div>
+          <div class="cces-subtitle">A clinician-focused pilot service for answering real-world clinical questions with real-world EHR data</div>
+        </div>
+        <a href="https://enact-network.org/resources/concierge-clinical-evidence-service/" target="_blank" rel="noopener" class="cces-external-btn">Submit a question ↗</a>
+      </div>
+
+      <!-- What CCES does -->
+      <div class="cces-what-grid fade-in">
+        <div class="cces-what-item">
+          <p>Uses de-identified, aggregate EHR data from up to 50 participating health systems — giving answers grounded in real patient populations, not just published trial cohorts.</p>
+        </div>
+        <div class="cces-what-item">
+          <p>Supports questions where existing evidence or clinical guidelines are limited or unclear — the gap between what guidelines say and what the patient in front of you looks like.</p>
+        </div>
+        <div class="cces-what-item">
+          <p>Returns an interpretable summary to help inform clinical decision-making — written for clinicians, not data scientists, with explicit acknowledgment of limitations.</p>
+        </div>
+        <div class="cces-what-item">
+          <p>Free to clinicians and supported by grant funding — no cost, no contract, no informatics expertise required to submit a question.</p>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <p class="cces-steps-label">How it works</p>
+      <div class="cces-steps fade-in">
+        <div class="cces-step">
+          <div class="cces-step-num">01</div>
+          <div class="cces-step-title">Submit your question</div>
+          <p class="cces-step-desc">Go to the CCES website and complete a short form with your contact information and clinical question.</p>
+        </div>
+        <div class="cces-step">
+          <div class="cces-step-num">02</div>
+          <div class="cces-step-title">Refine the evidence</div>
+          <p class="cces-step-desc">The CCES team follows up to clarify your question and translates it into an EHR query across the ENACT network.</p>
+        </div>
+        <div class="cces-step">
+          <div class="cces-step-num">03</div>
+          <div class="cces-step-title">Analyze the data</div>
+          <p class="cces-step-desc">The query runs against de-identified, aggregate data from up to 50 participating health systems. No informatics expertise required.</p>
+        </div>
+        <div class="cces-step">
+          <div class="cces-step-num">04</div>
+          <div class="cces-step-title">Receive a concise response</div>
+          <p class="cces-step-desc">You receive an interpretable summary — real-world evidence to inform your thinking and your conversation with the patient.</p>
+        </div>
+      </div>
+
+      <!-- What kinds of questions -->
+      <p class="cces-steps-label" style="margin-top:48px;">Questions CCES can answer</p>
+      <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:20px; line-height:1.7; max-width:700px;">Best suited for questions that can be defined using diagnoses, medications, procedures, laboratory results, encounters, or outcomes in the EHR.</p>
+      <div class="q-types-grid fade-in">
+        <div class="q-type">
+          <span class="q-icon">◆</span>
+          <p class="q-text">"What is the risk of recurrence after restarting a treatment?"</p>
+        </div>
+        <div class="q-type">
+          <span class="q-icon">◆</span>
+          <p class="q-text">"Among patients with a specific condition, how often is one treatment used compared with another?"</p>
+        </div>
+        <div class="q-type">
+          <span class="q-icon">◆</span>
+          <p class="q-text">"What outcomes occur after a medication, procedure, or diagnosis?"</p>
+        </div>
+        <div class="q-type">
+          <span class="q-icon">◆</span>
+          <p class="q-text">"How common is a clinical event in patients with certain characteristics?"</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       CCES CLINICAL EXAMPLES
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-light" id="cces-examples">
+    <div class="section-inner">
+      <p class="eyebrow">CCES in action</p>
+      <h2 class="section-h2" style="margin-bottom:12px;">Clinical examples</h2>
+      <p class="section-lead" style="margin-bottom:40px;">These examples show the kind of real-world evidence CCES returns — interpretable summaries grounded in aggregate EHR data across multiple health systems. They are illustrative of what the service can provide; limitations are explicit in every response.</p>
+
+      <div class="examples-grid fade-in">
+
+        <!-- Example 1: SGLT2i/GLP-1RA -->
+        <div class="example-card">
+          <div class="example-header">
+            <div class="example-label">Example 1 · Diabetes &amp; Peripheral Artery Disease</div>
+            <div class="example-title">SGLT2i / GLP-1RA vs. Other Antidiabetics — Lower Limb Amputations</div>
+          </div>
+          <div class="example-question">"Among patients with diabetes and peripheral artery disease, are patients treated with an SGLT2 inhibitor or GLP-1 receptor agonist less likely to have lower limb amputation compared with patients on other diabetes medications?"</div>
+          <div class="example-body">
+            <div class="example-stats">
+              <div class="example-stat">
+                <div class="example-stat-num">17</div>
+                <div class="example-stat-label">Sites</div>
+              </div>
+              <div class="example-stat">
+                <div class="example-stat-num">67K</div>
+                <div class="example-stat-label">SGLT2/GLP-1 patients</div>
+              </div>
+              <div class="example-stat">
+                <div class="example-stat-num">0.66</div>
+                <div class="example-stat-label">Crude IRR</div>
+              </div>
+            </div>
+            <p class="example-finding">The observed lower limb amputation rate was approximately 55 per 1,000 in the SGLT2/GLP-1 group, compared with approximately 80 per 1,000 in the other diabetes medication group — a crude incidence rate ratio of 0.66, suggesting a lower observed incidence of amputation in the SGLT2/GLP-1 group.</p>
+          </div>
+          <div class="example-caveat">Note: CCES does not make prescribing recommendations. This is aggregate real-world evidence to help inform clinical thinking and patient discussion. Limitations: this analysis did not fully account for baseline differences, comorbidities, treatment duration, dose, or patients who may have used medications from both groups.</div>
+        </div>
+
+        <!-- Example 2: ICS Candida -->
+        <div class="example-card">
+          <div class="example-header">
+            <div class="example-label">Example 2 · Pulmonology / Infectious Disease</div>
+            <div class="example-title">ICS vs. Non-ICS — Candida Esophagitis Recurrence</div>
+          </div>
+          <div class="example-question">"Among patients who previously had Candida esophagitis and were on inhaled corticosteroids, are they more likely to have recurrence if restarted on ICS compared with similar patients who are not restarted?"</div>
+          <div class="example-body">
+            <div class="example-stats">
+              <div class="example-stat">
+                <div class="example-stat-num">575</div>
+                <div class="example-stat-label">ICS patients</div>
+              </div>
+              <div class="example-stat">
+                <div class="example-stat-num">465</div>
+                <div class="example-stat-label">Non-ICS patients</div>
+              </div>
+              <div class="example-stat">
+                <div class="example-stat-num">1.40</div>
+                <div class="example-stat-label">Crude IRR</div>
+              </div>
+            </div>
+            <p class="example-finding">Patients who resumed inhaled corticosteroids had approximately 40% higher observed incidence of recurrent Candida esophagitis — recurrence rates of 191 vs. 129 per 1,000 patients. The crude incidence rate ratio was 1.40.</p>
+          </div>
+          <div class="example-caveat">Note: this is not a treatment recommendation. It is real-world evidence to inform the clinical conversation. Limitations include possible confounding and the fact that the benefit of the inhaled steroid is not measured. <em>Candida esophagitis: fungal infection of the esophagus caused by overgrowth of Candida yeast.</em></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       CCES TEAM + SUBMIT CTA
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-royal" id="cces-team" style="padding-top: clamp(36px,4vw,52px);">
+    <div class="section-inner">
+
+      <div class="team-strip">
+        <div class="team-strip-label">CCES project team</div>
+        <div class="team-members">
+          <!-- Pitt team -->
+          <div class="team-member pitt">Olga Kravchenko, MS, PhD <span class="team-inst">· Pitt</span></div>
+          <div class="team-member pitt">Shyam Visweswaran, MD, PhD <span class="team-inst">· Pitt DBMI</span></div>
+          <div class="team-member pitt">Eugene M. Sadhu, MD <span class="team-inst">· Pitt DBMI</span></div>
+          <div class="team-member pitt">Malarkodi J. Samayamuthu, MD <span class="team-inst">· Pitt DBMI</span></div>
+          <div class="team-member pitt">Wei-Hsuan Lo-Ciganic, PhD <span class="team-inst">· Pitt</span></div>
+          <div class="team-member pitt">Michele Morris <span class="team-inst">· Pitt DBMI</span></div>
+          <div class="team-member pitt">Steven E. Reis, MD <span class="team-inst">· Pitt</span></div>
+          <!-- External collaborators -->
+          <div class="team-member external">John F. Bell, MD, MPH <span class="team-inst">· UCSD</span></div>
+          <div class="team-member external">Gary S. Firestein, MD <span class="team-inst">· UCSD</span></div>
+          <div class="team-member external">Nathan Yung, MD <span class="team-inst">· UCSD</span></div>
+          <div class="team-member external">Maryam Gholami, PhD <span class="team-inst">· UCSD</span></div>
+          <div class="team-member external">Amy Westermann, MPH <span class="team-inst">· UCSD</span></div>
+          <div class="team-member external">Robert Toto, MD <span class="team-inst">· UT Southwestern</span></div>
+        </div>
+        <p style="font-family:var(--font-sans); font-size:11px; color:rgba(255,255,255,0.35); margin-top:16px; letter-spacing:0.05em;">
+          Gold border = Pitt team · Blue border = external collaborators (UCSD, UT Southwestern)
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Submit CTA -->
+  <div style="padding: 0 clamp(20px,5vw,80px); background: var(--royal);">
+    <div style="max-width: var(--max-w); margin: 0 auto; padding-bottom: clamp(40px,5vw,64px);">
+      <div class="cta-strip">
+        <div class="cta-text">
+          <div class="cta-label">Have a clinical question?</div>
+          <p class="cta-body">CCES is free to clinicians. Submit your question through the ENACT network — no informatics expertise required. The CCES team will follow up to refine your question before running the query.</p>
+        </div>
+        <a href="https://enact-network.org/resources/concierge-clinical-evidence-service/" target="_blank" rel="noopener" class="cta-btn">Submit a question to CCES ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FUTURE PROJECTS PLACEHOLDER
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-light" id="projects">
+    <div class="section-inner">
+      <p class="eyebrow">Research projects</p>
+      <h2 class="section-h2" style="margin-bottom:12px;">More projects coming</h2>
+      <p class="section-lead" style="margin-bottom:32px;">PITTCARE's research portfolio is actively growing. Each project will appear here with its own section — including principal investigator, aims, methods, team, and outputs.</p>
+
+      <div class="future-project fade-in">
+        <span class="future-project-icon">◎</span>
+        <div class="future-project-title">Next project</div>
+        <p class="future-project-text">Add the next PITTCARE research project by duplicating the CCES section pattern above. Each project section includes: badge + title, description, methods or workflow, key findings or examples, and team strip.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="site.js"></script>
+</body>
+</html>
