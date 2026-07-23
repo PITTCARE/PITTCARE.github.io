@@ -122,6 +122,30 @@
     .ra-tag.gold    { background: rgba(255,184,28,0.15); color: #7a5200; }
 
     .faculty-bio-block { display: flex; flex-direction: column; gap: 14px; }
+
+    /* ── Research sub-navigation ─────────────────────────────────── */
+    .research-subnav-link {
+      font-family: var(--font-sans); font-weight: 700; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--royal);
+      text-decoration: none; padding: 14px 0; white-space: nowrap;
+      border-bottom: 3px solid transparent; transition: border-color 0.2s, color 0.2s;
+    }
+    .research-subnav-link:hover { border-bottom-color: var(--gold); color: var(--royal); }
+
+    /* ── Collaborator mini-cards ─────────────────────────────────── */
+    .collab-mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .collab-mini-card {
+      background: var(--white); border: 1px solid #e4e6ec; border-top: 3px solid var(--royal);
+      padding: 20px 20px 18px;
+    }
+    .collab-mini-card.gold-border { border-top-color: var(--gold); }
+    .collab-mini-avatar {
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-weight: 800; font-size: 14px; margin-bottom: 12px;
+    }
+    .collab-mini-name { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: var(--royal); margin-bottom: 3px; }
+    .collab-mini-title { font-family: var(--font-sans); font-size: 11px; color: #777; line-height: 1.4; margin-bottom: 10px; }
+    .collab-mini-text { font-family: var(--font-serif); font-weight: 300; font-size: 13px; line-height: 1.65; color: #444; margin-bottom: 12px; }
     .faculty-bio-block p { font-family: var(--font-serif); font-weight: 300; font-size: 15px; line-height: 1.8; color: #333; }
 
     .faculty-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
@@ -323,14 +347,22 @@
       <p class="page-header-lead">Generating, translating, and disseminating evidence on the application of Intelligence-Technology in primary care — built with the people it serves, grounded in the values of family medicine.</p>
     </div>
   </header>
+  <!-- ── Sub-navigation: Faculty / Collaborators / Projects ──────── -->
+  <nav style="background:var(--gray-light); border-bottom:1px solid #e4e6ec; position:sticky; top:60px; z-index:150;">
+    <div style="max-width:var(--max-w); margin:0 auto; padding:0 clamp(20px,5vw,80px); display:flex; gap:clamp(20px,3vw,40px); overflow-x:auto;">
+      <a href="#faculty" class="research-subnav-link">Department Faculty</a>
+      <a href="#collaborators" class="research-subnav-link">Collaborators</a>
+      <a href="#projects" class="research-subnav-link">Projects</a>
+    </div>
+  </nav>
 
   <!-- ══════════════════════════════════════════════════════════════
        RESEARCH FACULTY
   ═══════════════════════════════════════════════════════════════ -->
   <section class="section bg-white" id="faculty">
     <div class="section-inner">
-      <p class="eyebrow">Research faculty</p>
-      <h2 class="section-h2" style="margin-bottom:40px;">Meet the researchers</h2>
+      <p class="eyebrow">Department faculty</p>
+      <h2 class="section-h2" style="margin-bottom:40px;">Meet the department's research team</h2>
 
       <div class="faculty-card fade-in">
         <div>
@@ -370,8 +402,211 @@
 
     </div>
   </section>
+  <!-- ══════════════════════════════════════════════════════════════
+       DR. BRIDGES — FACULTY
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-light" id="bridges">
+    <div class="section-inner">
+      <p class="eyebrow">Research faculty · Voice of the People leadership</p>
 
-  <!-- Node divider -->
+      <div class="faculty-card fade-in">
+        <div>
+          <div class="faculty-portrait" style="background: linear-gradient(135deg, #002570 0%, #66b2e3 100%);">NB</div>
+        </div>
+        <div>
+          <div class="faculty-name">Nora Bridges</div>
+          <div class="faculty-credentials">PhD</div>
+          <div class="faculty-title">
+            Research Scientist, Department of Family Medicine<br>
+            University of Pittsburgh School of Medicine
+          </div>
+
+          <div class="research-areas">
+            <span class="ra-tag primary">Qualitative Research</span>
+            <span class="ra-tag blue">Patient &amp; Provider Perspectives</span>
+            <span class="ra-tag blue">Focus Groups &amp; Interviews</span>
+            <span class="ra-tag blue">Health Equity</span>
+            <span class="ra-tag gold">Ambient Intelligence</span>
+            <span class="ra-tag gold">Applied Anthropology</span>
+          </div>
+
+          <div class="faculty-bio-block">
+            <p>Dr. Bridges is a Research Scientist in the Department of Family Medicine whose work centers on the human side of Intelligence-Technology in health care. Where Dr. Kravchenko asks what the data shows, Dr. Bridges asks what patients and providers actually experience — and whether those experiences are equitable.</p>
+            <p>She holds a PhD in Social and Cultural Anthropology from the University of Pittsburgh and received the Peter K. New Student Research Award from the Society for Applied Anthropology. Her methodological expertise spans the full qualitative toolkit: purposive sampling, semi-structured interviews, focus groups, codebook development, thematic analysis, and intercoder reliability assessment.</p>
+            <p>Dr. Bridges co-leads the Voice of the People Survey alongside Rebecca Shisler and Dr. Todd Bear. Together they form PITTCARE's VoP leadership group — Bridges and Shisler anchoring the qualitative interview work, Bear directing the large-scale survey methodology. At PITTCARE, Dr. Bridges anchors the center's Voice of the People commitment in rigorous method, and leads the Ambient AI study examining how ambient Intelligence-Technology tools affect the patient-provider relationship, clinical workflows, and health equity across diverse family medicine practices.</p>
+          </div>
+
+          <div class="faculty-links" style="margin-top:20px;">
+            <a href="https://www.familymedicine.pitt.edu/people/nora-bridges-phd" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
+            <a href="mailto:nora.bridges@pitt.edu" class="faculty-link gold">nora.bridges@pitt.edu</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rebecca Shisler — co-investigator -->
+      <div style="margin-top:40px; padding-top:32px; border-top:1px solid #e4e6ec;">
+        <p style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--light-blue); margin-bottom:16px; display:flex; align-items:center; gap:8px;"><span style="display:block; width:16px; height:2px; background:var(--light-blue);"></span>Voice of the People co-investigator</p>
+        <div style="display:grid; grid-template-columns:80px 1fr; gap:24px; align-items:start;" class="fade-in">
+          <div style="width:80px; height:80px; background:linear-gradient(135deg,#003594,#66b2e3); display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:800; font-size:22px; color:rgba(255,255,255,0.9);">RS</div>
+          <div>
+            <div style="font-family:var(--font-sans); font-weight:700; font-size:17px; color:var(--royal); margin-bottom:2px;">Rebecca Shisler</div>
+            <div style="font-family:var(--font-sans); font-size:12px; color:#888; margin-bottom:4px;">MA · PhD Candidate (Sociology, NC State University)</div>
+            <div style="font-family:var(--font-sans); font-size:13px; color:var(--light-blue); font-weight:500; margin-bottom:12px;">Clinical Research Coordinator III, Department of Family Medicine</div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
+              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Mixed Methods</span>
+              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Qualitative Research</span>
+              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Participatory Methods</span>
+              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Food Security &amp; Health</span>
+            </div>
+            <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; line-height:1.8; color:#333; margin-bottom:10px;">Rebecca Shisler joined the Department of Family Medicine in January 2025. She is a mixed methods social scientist with particular expertise in qualitative and participatory research methods. Her background spans multi-disciplinary projects on food security among university students, experiences of low-income populations during COVID-19, and community-based health research. She holds an MA in Sociology from Colorado State University and is a PhD candidate in Sociology at North Carolina State University, with research interests centering on health, food systems, and the human dimensions of environment and nature.</p>
+            <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; line-height:1.8; color:#333;">On the Voice of the People Survey, Shisler works alongside Dr. Bridges on the qualitative interview arm — bringing her participatory research expertise to the structured interview design, sampling, and analysis that give the VoP its methodological rigor.</p>
+            <div style="margin-top:10px;">
+              <a href="https://www.familymedicine.pitt.edu/people/rebecca-shisler-ma" target="_blank" rel="noopener" style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--royal); text-decoration:none;">Faculty profile ↗</a>
+              <span style="color:#ccc; margin:0 10px;">·</span>
+              <a href="mailto:rebecca.shisler@pitt.edu" style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#7a5200; text-decoration:none;">rebecca.shisler@pitt.edu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       DR. BEAR — VoP METHODOLOGY LEAD
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-white" id="bear">
+    <div class="section-inner">
+      <p class="eyebrow">Research faculty · Voice of the People leadership</p>
+
+      <div class="faculty-card fade-in">
+        <div>
+          <div class="faculty-portrait" style="background: linear-gradient(135deg, #003594 0%, #003594 60%, #ffb81c 100%);">TB</div>
+        </div>
+        <div>
+          <div class="faculty-name">Todd Bear</div>
+          <div class="faculty-credentials">PhD</div>
+          <div class="faculty-title">
+            Research Scientist, Department of Family Medicine<br>
+            University of Pittsburgh School of Medicine
+          </div>
+
+          <div class="research-areas">
+            <span class="ra-tag primary">Large-Scale Survey Methods</span>
+            <span class="ra-tag blue">Population Health Surveillance</span>
+            <span class="ra-tag blue">Health Disparities</span>
+            <span class="ra-tag blue">Childhood Adversity &amp; Violence</span>
+            <span class="ra-tag gold">Cancer Surveillance</span>
+            <span class="ra-tag gold">BRFSS &amp; Behavioral Surveillance</span>
+          </div>
+
+          <div class="faculty-bio-block">
+            <p>Dr. Bear is a Research Scientist in the Department of Family Medicine whose expertise is large-scale population survey methodology. He brings to PITTCARE something that most qualitative research teams don't have built in: deep experience designing, fielding, and analyzing population-representative surveys at state and national scale — the methodological counterpart to Bridges' and Shisler's qualitative depth.</p>
+            <p>His research has engaged directly with the Behavioral Risk Factor Surveillance System (BRFSS) — the CDC's state-based telephone survey system that completes more than 400,000 adult interviews annually across all 50 states and is the world's largest continuously conducted health survey. Dr. Bear has worked with BRFSS data at the state level, examining how survey instrument design, identity variable construction, and sampling methodology affect the validity of population health estimates — particularly for underrepresented groups. His published work includes analysis of gender identity and sex variable conflicts in BRFSS that affect how transgender health data is collected and interpreted.</p>
+            <p>As Director of the Hillman Cancer Center's Population Survey Facility, Dr. Bear leads cancer surveillance work using survey methods to investigate disparities in cancer prevention, treatment access, quality of life, and protective and risk factors across the lifespan — with an explicit focus on reducing cancer-related health disparities in the HCC catchment area. His Google Scholar profile lists research interests in childhood adversity, violence, and health disparities, with over 900 citations.</p>
+            <p>On the Voice of the People Survey, Dr. Bear provides the survey design architecture — ensuring that the VoP's structured interviews are built on a statistically sound sampling framework, that results are representative rather than merely illustrative, and that the survey can be fielded at state-level scale over time in the way that BRFSS operates: year after year, building a longitudinal picture of how public views on Intelligence-Technology in primary care evolve.</p>
+          </div>
+
+          <div class="faculty-links" style="margin-top:20px;">
+            <a href="https://www.familymedicine.pitt.edu/people/todd-bear-phd" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
+            <a href="https://scholar.google.com/citations?user=sOog2PYAAAAJ" target="_blank" rel="noopener" class="faculty-link">Publications ↗</a>
+            <a href="mailto:tobs2@pitt.edu" class="faculty-link gold">tobs2@pitt.edu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══════════════════════════════════════════════════════════════
+       DR. ZIMMERMAN — VACCINE POLICY & AGENT-BASED MODELING
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-light" id="zimmerman">
+    <div class="section-inner">
+      <p class="eyebrow">Department faculty · Vaccine policy &amp; agent-based modeling</p>
+
+      <div class="faculty-card fade-in">
+        <div>
+          <div class="faculty-portrait" style="background: linear-gradient(135deg, #003594 0%, #66b2e3 55%, #ffb81c 100%);">RZ</div>
+        </div>
+        <div>
+          <div class="faculty-name">Richard K. Zimmerman</div>
+          <div class="faculty-credentials">MD, MPH, FAAFP, FIDSA</div>
+          <div class="faculty-title">
+            Professor &amp; Vice Chair for Preventive Medicine Research, Department of Family Medicine<br>
+            Joint appointments, Clinical and Translational Science Institute &amp; Behavioral and Community Health Sciences<br>
+            University of Pittsburgh School of Medicine
+          </div>
+
+          <div class="research-areas">
+            <span class="ra-tag primary">Vaccine Policy &amp; Effectiveness</span>
+            <span class="ra-tag blue">Agent-Based Modeling</span>
+            <span class="ra-tag blue">Influenza &amp; Vaccine-Preventable Disease</span>
+            <span class="ra-tag blue">CDC ACIP</span>
+            <span class="ra-tag gold">Public Health Bioethics</span>
+            <span class="ra-tag gold">Practice-Based Research</span>
+          </div>
+
+          <div class="faculty-bio-block">
+            <p>Dr. Zimmerman is Professor and Vice Chair for Preventive Medicine Research in the Department of Family Medicine, with joint appointments in the Clinical and Translational Science Institute and Behavioral and Community Health Sciences. His work in vaccine policy analysis led him to the CDC's Advisory Committee on Immunization Practices (ACIP), first as a liaison and later as a voting member, where he chaired the influenza and adult vaccination working groups.</p>
+            <p>Alongside Dr. Katherine Williams, Dr. Zimmerman has applied <a href="https://fred.publichealth.pitt.edu" target="_blank" rel="noopener" style="color:var(--royal); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);">FRED</a> — an agent-based epidemic simulation platform developed by Pitt's Public Health Dynamics Laboratory in the School of Public Health — to study influenza vaccination strategy: vaccine efficacy, dosing regimens, household composition, and how vaccination patterns shape population-level flu burden across age and race. This work is PITTCARE's most direct, active tie to the School of Public Health.</p>
+            <p>He practices at the East Liberty Family Health Care Center, where he serves on the Quality Assurance and Ethics Committees — a practical bioethics grounding that connects directly to PITTCARE's Ethical pillar and its emphasis on accountability and equity in how Intelligence-Technology reaches real patients.</p>
+          </div>
+
+          <div class="faculty-links" style="margin-top:20px;">
+            <a href="https://www.familymedicine.pitt.edu/people/richard-k-zimmerman-md-mph-faafp-fidsa" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
+            <a href="https://www.ncbi.nlm.nih.gov/sites/myncbi/richard.zimmerman.1/bibliography/45853999/public/?sort=date&direction=ascending" target="_blank" rel="noopener" class="faculty-link">Publications ↗</a>
+            <a href="research.html#fred-modeling" class="faculty-link">FRED project →</a>
+            <a href="mailto:zimmer@pitt.edu" class="faculty-link gold">zimmer@pitt.edu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       DR. WILLIAMS — VACCINE EPIDEMIOLOGY & MODELING
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-white" id="williams">
+    <div class="section-inner">
+      <p class="eyebrow">Department faculty · Vaccine epidemiology &amp; modeling</p>
+
+      <div class="faculty-card fade-in">
+        <div>
+          <div class="faculty-portrait" style="background: linear-gradient(135deg, #002570 0%, #003594 50%, #66b2e3 100%);">KW</div>
+        </div>
+        <div>
+          <div class="faculty-name">Katherine V. Williams</div>
+          <div class="faculty-credentials">MD, MPH</div>
+          <div class="faculty-title">
+            Assistant Professor, Department of Family Medicine<br>
+            University of Pittsburgh School of Medicine
+          </div>
+
+          <div class="research-areas">
+            <span class="ra-tag primary">Vaccine Epidemiology</span>
+            <span class="ra-tag blue">Agent-Based Modeling</span>
+            <span class="ra-tag blue">Influenza Vaccine Effectiveness</span>
+            <span class="ra-tag blue">Health Equity in Vaccination</span>
+            <span class="ra-tag gold">CDC ACIP (RSV Workgroup)</span>
+            <span class="ra-tag gold">Clinical Research</span>
+          </div>
+
+          <div class="faculty-bio-block">
+            <p>Dr. Williams is an epidemiologist and clinical research physician in the Department of Family Medicine whose work focuses on multi-disciplinary approaches to understanding clinical responses to vaccination and reducing disease burden. She has served as Research Project Coordinator on CDC-funded influenza studies since 2019, and since 2022 has represented the Association for Prevention Teaching and Research (APTR) on the CDC's Advisory Committee on Immunization Practices (ACIP) workgroup for adult RSV vaccines.</p>
+            <p>She has used <a href="https://fred.publichealth.pitt.edu" target="_blank" rel="noopener" style="color:var(--royal); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);">FRED</a> (A Framework for Reconstructing Epidemiological Dynamics) — the agent-based simulation platform built by Pitt's Public Health Dynamics Laboratory in the School of Public Health — to study the impact of a range of influenza vaccine strategies on the population by age, race, and geographic location, working closely with Dr. Richard Zimmerman.</p>
+            <p>To more directly understand vaccines' impact on underserved populations, she completed a Diversity, Equity, and Inclusion fellowship using Human-Centered Design certification to develop an educational outreach strategy in rural areas — work that echoes PITTCARE's own commitment to designing Intelligence-Technology with, not just for, the communities it serves.</p>
+          </div>
+
+          <div class="faculty-links" style="margin-top:20px;">
+            <a href="https://www.familymedicine.pitt.edu/people/katherine-williams-md-mph" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
+            <a href="research.html#fred-modeling" class="faculty-link">FRED project →</a>
+            <a href="mailto:williamskv@upmc.edu" class="faculty-link gold">williamskv@upmc.edu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Node divider — end of Department Faculty group -->
   <div class="node-divider">
     <div class="nd"></div>
     <div class="nd"></div>
@@ -380,6 +615,67 @@
     <div class="nd dim"></div>
     <div class="nd dim"></div>
   </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       COLLABORATORS — NOT DEPARTMENT FACULTY
+  ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-white" id="collaborators">
+    <div class="section-inner">
+      <p class="eyebrow">Collaborating researchers</p>
+      <h2 class="section-h2" style="margin-bottom:12px;">Beyond the department</h2>
+      <p class="section-lead" style="margin-bottom:40px;">PITTCARE's work depends on partnerships across Pitt's six schools of the health sciences and beyond — researchers who bring expertise, tools, and collaboration to specific projects without being core research faculty of the center. Full profiles for everyone below live on our <a href="collaborators.html" style="color:var(--royal); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);">Collaborators page</a>.</p>
+
+      <div class="collab-mini-grid fade-in">
+
+        <div class="collab-mini-card">
+          <div class="collab-mini-avatar" style="background:var(--gold); color:var(--royal);">SV</div>
+          <div class="collab-mini-name">Shyam Visweswaran, MD, PhD</div>
+          <div class="collab-mini-title">Chair, Dept. of Biomedical Informatics · Director, CCAI</div>
+          <p class="collab-mini-text">Founding informatics partner since 2022 — CCES, the headache-AI spotlight, and PITTCARE's broader clinical decision support agenda.</p>
+          <a href="collaborators.html#visweswaran" class="faculty-link">Full profile →</a>
+        </div>
+
+        <div class="collab-mini-card">
+          <div class="collab-mini-avatar" style="background:var(--light-blue); color:var(--royal);">JM</div>
+          <div class="collab-mini-name">John S. Maier, PhD, MD</div>
+          <div class="collab-mini-title">Dept. of Family Medicine · Dir., Innovation &amp; Strategic Initiatives</div>
+          <p class="collab-mini-text">Leads PITTCARE's education mission — developer and instructor of the Critical Appraisal in AI course for second-year medical students.</p>
+          <a href="collaborators.html#maier" class="faculty-link">Full profile →</a>
+        </div>
+
+        <div class="collab-mini-card">
+          <div class="collab-mini-avatar" style="background:var(--light-blue); color:var(--royal);">YW</div>
+          <div class="collab-mini-name">Yanshan Wang, PhD, FAMIA</div>
+          <div class="collab-mini-title">Vice Chair for Research, Health Information Management, SHRS</div>
+          <p class="collab-mini-text">Directs PittNAIL and serves as NLP Lead for the ENACT Network; co-author on the multi-agent LLM headache-diagnosis project.</p>
+          <a href="collaborators.html#wang" class="faculty-link">Full profile →</a>
+        </div>
+
+        <div class="collab-mini-card gold-border">
+          <div class="collab-mini-avatar" style="background:var(--royal); color:var(--gold); font-size:11px;">FRED</div>
+          <div class="collab-mini-name">FRED</div>
+          <div class="collab-mini-title">Public Health Dynamics Laboratory · School of Public Health</div>
+          <p class="collab-mini-text">Agent-based simulation platform used by Drs. Zimmerman and Williams to model influenza vaccination strategy — PITTCARE's active tie to Public Health.</p>
+          <a href="collaborators.html#fred" class="faculty-link">Full profile →</a>
+        </div>
+
+      </div>
+
+      <p style="margin-top:32px;"><a href="collaborators.html" class="faculty-link">See all collaborators across Pitt's six schools →</a></p>
+    </div>
+  </section>
+
+  <!-- Node divider -->
+  <div class="node-divider">
+    <div class="nd"></div>
+    <div class="nd"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+    <div class="nd dim"></div>
+  </div>
+
+  <div id="projects"></div>
 
   <!-- ══════════════════════════════════════════════════════════════
        CCES PROJECT
@@ -578,131 +874,6 @@
     </div>
   </div>
   <!-- ══════════════════════════════════════════════════════════════
-       DR. BRIDGES — FACULTY
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section bg-light" id="bridges">
-    <div class="section-inner">
-      <p class="eyebrow">Research faculty · Voice of the People leadership</p>
-
-      <div class="faculty-card fade-in">
-        <div>
-          <div class="faculty-portrait" style="background: linear-gradient(135deg, #002570 0%, #66b2e3 100%);">NB</div>
-        </div>
-        <div>
-          <div class="faculty-name">Nora Bridges</div>
-          <div class="faculty-credentials">PhD</div>
-          <div class="faculty-title">
-            Research Scientist, Department of Family Medicine<br>
-            University of Pittsburgh School of Medicine
-          </div>
-
-          <div class="research-areas">
-            <span class="ra-tag primary">Qualitative Research</span>
-            <span class="ra-tag blue">Patient &amp; Provider Perspectives</span>
-            <span class="ra-tag blue">Focus Groups &amp; Interviews</span>
-            <span class="ra-tag blue">Health Equity</span>
-            <span class="ra-tag gold">Ambient Intelligence</span>
-            <span class="ra-tag gold">Applied Anthropology</span>
-          </div>
-
-          <div class="faculty-bio-block">
-            <p>Dr. Bridges is a Research Scientist in the Department of Family Medicine whose work centers on the human side of Intelligence-Technology in health care. Where Dr. Kravchenko asks what the data shows, Dr. Bridges asks what patients and providers actually experience — and whether those experiences are equitable.</p>
-            <p>She holds a PhD in Social and Cultural Anthropology from the University of Pittsburgh and received the Peter K. New Student Research Award from the Society for Applied Anthropology. Her methodological expertise spans the full qualitative toolkit: purposive sampling, semi-structured interviews, focus groups, codebook development, thematic analysis, and intercoder reliability assessment.</p>
-            <p>Dr. Bridges co-leads the Voice of the People Survey alongside Rebecca Shisler and Dr. Todd Bear. Together they form PITTCARE's VoP leadership group — Bridges and Shisler anchoring the qualitative interview work, Bear directing the large-scale survey methodology. At PITTCARE, Dr. Bridges anchors the center's Voice of the People commitment in rigorous method, and leads the Ambient AI study examining how ambient Intelligence-Technology tools affect the patient-provider relationship, clinical workflows, and health equity across diverse family medicine practices.</p>
-          </div>
-
-          <div class="faculty-links" style="margin-top:20px;">
-            <a href="https://www.familymedicine.pitt.edu/people/nora-bridges-phd" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
-            <a href="mailto:nora.bridges@pitt.edu" class="faculty-link gold">nora.bridges@pitt.edu</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Rebecca Shisler — co-investigator -->
-      <div style="margin-top:40px; padding-top:32px; border-top:1px solid #e4e6ec;">
-        <p style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--light-blue); margin-bottom:16px; display:flex; align-items:center; gap:8px;"><span style="display:block; width:16px; height:2px; background:var(--light-blue);"></span>Voice of the People co-investigator</p>
-        <div style="display:grid; grid-template-columns:80px 1fr; gap:24px; align-items:start;" class="fade-in">
-          <div style="width:80px; height:80px; background:linear-gradient(135deg,#003594,#66b2e3); display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:800; font-size:22px; color:rgba(255,255,255,0.9);">RS</div>
-          <div>
-            <div style="font-family:var(--font-sans); font-weight:700; font-size:17px; color:var(--royal); margin-bottom:2px;">Rebecca Shisler</div>
-            <div style="font-family:var(--font-sans); font-size:12px; color:#888; margin-bottom:4px;">MA · PhD Candidate (Sociology, NC State University)</div>
-            <div style="font-family:var(--font-sans); font-size:13px; color:var(--light-blue); font-weight:500; margin-bottom:12px;">Clinical Research Coordinator III, Department of Family Medicine</div>
-            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;">
-              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Mixed Methods</span>
-              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Qualitative Research</span>
-              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Participatory Methods</span>
-              <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; background:var(--new-sky); color:var(--royal);">Food Security &amp; Health</span>
-            </div>
-            <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; line-height:1.8; color:#333; margin-bottom:10px;">Rebecca Shisler joined the Department of Family Medicine in January 2025. She is a mixed methods social scientist with particular expertise in qualitative and participatory research methods. Her background spans multi-disciplinary projects on food security among university students, experiences of low-income populations during COVID-19, and community-based health research. She holds an MA in Sociology from Colorado State University and is a PhD candidate in Sociology at North Carolina State University, with research interests centering on health, food systems, and the human dimensions of environment and nature.</p>
-            <p style="font-family:var(--font-serif); font-weight:300; font-size:14px; line-height:1.8; color:#333;">On the Voice of the People Survey, Shisler works alongside Dr. Bridges on the qualitative interview arm — bringing her participatory research expertise to the structured interview design, sampling, and analysis that give the VoP its methodological rigor.</p>
-            <div style="margin-top:10px;">
-              <a href="https://www.familymedicine.pitt.edu/people/rebecca-shisler-ma" target="_blank" rel="noopener" style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--royal); text-decoration:none;">Faculty profile ↗</a>
-              <span style="color:#ccc; margin:0 10px;">·</span>
-              <a href="mailto:rebecca.shisler@pitt.edu" style="font-family:var(--font-sans); font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#7a5200; text-decoration:none;">rebecca.shisler@pitt.edu</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════════
-       DR. BEAR — VoP METHODOLOGY LEAD
-  ═══════════════════════════════════════════════════════════════ -->
-  <section class="section bg-white" id="bear">
-    <div class="section-inner">
-      <p class="eyebrow">Research faculty · Voice of the People leadership</p>
-
-      <div class="faculty-card fade-in">
-        <div>
-          <div class="faculty-portrait" style="background: linear-gradient(135deg, #003594 0%, #003594 60%, #ffb81c 100%);">TB</div>
-        </div>
-        <div>
-          <div class="faculty-name">Todd Bear</div>
-          <div class="faculty-credentials">PhD</div>
-          <div class="faculty-title">
-            Research Scientist, Department of Family Medicine<br>
-            University of Pittsburgh School of Medicine
-          </div>
-
-          <div class="research-areas">
-            <span class="ra-tag primary">Large-Scale Survey Methods</span>
-            <span class="ra-tag blue">Population Health Surveillance</span>
-            <span class="ra-tag blue">Health Disparities</span>
-            <span class="ra-tag blue">Childhood Adversity &amp; Violence</span>
-            <span class="ra-tag gold">Cancer Surveillance</span>
-            <span class="ra-tag gold">BRFSS &amp; Behavioral Surveillance</span>
-          </div>
-
-          <div class="faculty-bio-block">
-            <p>Dr. Bear is a Research Scientist in the Department of Family Medicine whose expertise is large-scale population survey methodology. He brings to PITTCARE something that most qualitative research teams don't have built in: deep experience designing, fielding, and analyzing population-representative surveys at state and national scale — the methodological counterpart to Bridges' and Shisler's qualitative depth.</p>
-            <p>His research has engaged directly with the Behavioral Risk Factor Surveillance System (BRFSS) — the CDC's state-based telephone survey system that completes more than 400,000 adult interviews annually across all 50 states and is the world's largest continuously conducted health survey. Dr. Bear has worked with BRFSS data at the state level, examining how survey instrument design, identity variable construction, and sampling methodology affect the validity of population health estimates — particularly for underrepresented groups. His published work includes analysis of gender identity and sex variable conflicts in BRFSS that affect how transgender health data is collected and interpreted.</p>
-            <p>As Director of the Hillman Cancer Center's Population Survey Facility, Dr. Bear leads cancer surveillance work using survey methods to investigate disparities in cancer prevention, treatment access, quality of life, and protective and risk factors across the lifespan — with an explicit focus on reducing cancer-related health disparities in the HCC catchment area. His Google Scholar profile lists research interests in childhood adversity, violence, and health disparities, with over 900 citations.</p>
-            <p>On the Voice of the People Survey, Dr. Bear provides the survey design architecture — ensuring that the VoP's structured interviews are built on a statistically sound sampling framework, that results are representative rather than merely illustrative, and that the survey can be fielded at state-level scale over time in the way that BRFSS operates: year after year, building a longitudinal picture of how public views on Intelligence-Technology in primary care evolve.</p>
-          </div>
-
-          <div class="faculty-links" style="margin-top:20px;">
-            <a href="https://www.familymedicine.pitt.edu/people/todd-bear-phd" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
-            <a href="https://scholar.google.com/citations?user=sOog2PYAAAAJ" target="_blank" rel="noopener" class="faculty-link">Publications ↗</a>
-            <a href="mailto:tobs2@pitt.edu" class="faculty-link gold">tobs2@pitt.edu</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Node divider -->
-  <div class="node-divider">
-    <div class="nd"></div>
-    <div class="nd"></div>
-    <div class="nd"></div>
-    <div class="nd dim"></div>
-    <div class="nd dim"></div>
-    <div class="nd dim"></div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════════════════
        AMBIENT AI PROJECT
   ═══════════════════════════════════════════════════════════════ -->
   <section class="section bg-white" id="ambient-ai">
@@ -843,44 +1014,37 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════
-       DR. MAIER — EDUCATION FACULTY
+       FRED — AGENT-BASED MODELING OF INFLUENZA VACCINATION
   ═══════════════════════════════════════════════════════════════ -->
-  <section class="section bg-white" id="maier">
+  <section class="section bg-white" id="fred-modeling">
     <div class="section-inner">
-      <p class="eyebrow" style="color:var(--light-blue);">Education faculty</p>
+      <p class="eyebrow">Project · Agent-based modeling · School of Public Health</p>
+      <h2 class="section-h2" style="margin-bottom:12px;">Agent-Based Modeling of Influenza Vaccination with FRED</h2>
+      <p class="section-lead" style="margin-bottom:36px;">Drs. Richard Zimmerman and Katherine Williams use <a href="https://fred.publichealth.pitt.edu" target="_blank" rel="noopener" style="color:var(--royal); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);">FRED</a> (A Framework for Reconstructing Epidemiological Dynamics) — an agent-based epidemic simulation platform built by Pitt's Public Health Dynamics Laboratory — to study how vaccination strategy shapes influenza burden across the population.</p>
 
-      <div class="faculty-card fade-in">
+      <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start; margin-bottom:36px;">
         <div>
-          <div class="faculty-portrait" style="background: linear-gradient(135deg, #003594 0%, #003594 50%, #66b2e3 100%);">JM</div>
+          <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; line-height:1.8; color:#333; margin-bottom:14px;">FRED represents every person in a real geographic region as a distinct individual, interacting within realistic household, school, and workplace networks. That lets Zimmerman and Williams ask questions no clinical trial can answer directly: what happens to population-level flu burden if child vaccination coverage rises, if households vaccinate unevenly, or if a two-dose regimen replaces a single dose for older adults?</p>
+          <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; line-height:1.8; color:#333;">Their published FRED-based studies have examined vaccine efficacy and dosing regimens, race-based differences in influenza incidence tied to household composition, and the population-level effects of low-uptake seasons on future immunity — work that grounds vaccine policy recommendations in simulated population dynamics rather than extrapolation alone.</p>
         </div>
-        <div>
-          <div class="faculty-name">John S. Maier</div>
-          <div class="faculty-credentials">PhD, MD</div>
-          <div class="faculty-title">
-            Assistant Professor &amp; Director of Innovation and Strategic Initiatives<br>
-            Department of Family Medicine · Secondary appointment, Dept. of Biomedical Informatics<br>
-            University of Pittsburgh School of Medicine
-          </div>
-
-          <div class="research-areas">
-            <span class="ra-tag primary">Medical Education</span>
-            <span class="ra-tag blue">Critical Appraisal &amp; AI</span>
-            <span class="ra-tag blue">Technology Translation</span>
-            <span class="ra-tag blue">Innovation Strategy</span>
-            <span class="ra-tag gold">Physics &amp; Biomedical Imaging</span>
-          </div>
-
-          <div class="faculty-bio-block">
-            <p>Dr. Maier brings an unusual combination to PITTCARE's education mission: a PhD in Physics from the University of Illinois, an MD with Family Medicine residency training at UPMC Shadyside, and nearly a decade in industry as VP of Biomedical Research at ChemImage Corporation — where he co-invented 41 US patents in spectroscopic imaging. He returned to the University of Pittsburgh School of Medicine in 2011 as Director of Research and now leads Innovation and Strategic Initiatives for the Department of Family Medicine, with a secondary appointment in Biomedical Informatics.</p>
-            <p>His career arc — from experimental physics, through clinical training, through technology commercialization, to academic medicine — gives him an unusually clear view of what it takes to move a research finding into clinical use. At PITTCARE, that translational instinct is brought directly to the challenge of preparing the next generation of physicians to engage with Intelligence-Technology critically, not just as users, but as informed evaluators of what tools are safe, evidence-based, and worthy of trust.</p>
-          </div>
-
-          <div class="faculty-links" style="margin-top:20px;">
-            <a href="https://www.familymedicine.pitt.edu/people/john-s-maier-phd-md" target="_blank" rel="noopener" class="faculty-link">Faculty profile ↗</a>
-            <a href="mailto:jsmaier@pitt.edu" class="faculty-link gold">jsmaier@pitt.edu</a>
-          </div>
+        <div class="example-stats" style="grid-template-columns:1fr;">
+          <div class="example-stat"><div class="example-stat-num">2010–</div><div class="example-stat-label">Ongoing FRED collaboration</div></div>
+          <div class="example-stat"><div class="example-stat-num">10+</div><div class="example-stat-label">FRED-based publications</div></div>
         </div>
       </div>
+
+      <div style="background:var(--gray-light); border-top:1px solid #e4e6ec; padding:20px 24px;">
+        <p style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--royal); margin-bottom:10px;">Representative publications</p>
+        <p style="font-family:var(--font-serif); font-weight:300; font-size:13px; line-height:1.75; color:#333; margin-bottom:10px;">Williams KV, Krauland MG, Nowalk MP, Harrison LH, Williams JV, Roberts MS, Zimmerman RK. Increasing child vaccination coverage can reduce influenza cases across age groups: An agent-based modeling study. <em>J Infect.</em> 2025 Mar;90(3):106443.</p>
+        <p style="font-family:var(--font-serif); font-weight:300; font-size:13px; line-height:1.75; color:#333; margin-bottom:10px;">Williams KV, Krauland MG, Harrison LH, Williams JV, Roberts MS, Zimmerman RK. Influenza Vaccination, Household Composition, and Race-Based Differences in Influenza Incidence: An Agent-Based Modeling Study. <em>Am J Public Health.</em> 2025 Feb;115(2):209-216.</p>
+        <p style="font-family:var(--font-serif); font-weight:300; font-size:13px; line-height:1.75; color:#333;">Williams KV, Krauland MG, Harrison LH, Williams JV, Roberts MS, Zimmerman RK. Can a Two-Dose Influenza Vaccine Regimen Better Protect Older Adults? An Agent-Based Modeling Study. <em>Vaccines.</em> 2022 Oct;10(11):1799.</p>
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
+          <a href="https://fred.publichealth.pitt.edu/publications" target="_blank" rel="noopener" class="faculty-link">All FRED publications ↗</a>
+          <a href="https://www.phdl.pitt.edu/" target="_blank" rel="noopener" class="faculty-link">Public Health Dynamics Lab ↗</a>
+          <a href="collaborators.html#fred" class="faculty-link">FRED collaborator profile →</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -905,7 +1069,7 @@
           <p class="eyebrow" style="color:var(--royal);">Education · University of Pittsburgh School of Medicine</p>
           <span style="font-family:var(--font-sans); font-weight:700; font-size:10px; letter-spacing:0.13em; text-transform:uppercase; background:var(--royal); color:var(--white); padding:4px 10px; display:inline-block; margin-bottom:12px;">Active course · Second-year medical students</span>
           <h2 style="font-family:var(--font-sans); font-weight:800; font-size:clamp(24px,3.5vw,38px); line-height:1.05; color:var(--royal); margin-bottom:8px;">Critical Appraisal in the Setting of Artificial Intelligence</h2>
-          <p style="font-family:var(--font-serif); font-weight:300; font-style:italic; font-size:clamp(14px,1.5vw,16px); color:var(--royal); opacity:0.7;">Pitt Med Year 2 · Instructor: John S. Maier, PhD, MD</p>
+          <p style="font-family:var(--font-serif); font-weight:300; font-style:italic; font-size:clamp(14px,1.5vw,16px); color:var(--royal); opacity:0.7;">Pitt Med Year 2 · Instructor: John S. Maier, PhD, MD · <a href="collaborators.html#maier" style="color:var(--royal); font-style:normal; font-weight:700; font-size:12px; text-decoration:none; border-bottom:2px solid var(--gold);">Full profile →</a></p>
         </div>
         <div style="background:var(--royal); color:var(--white); padding:18px 24px; flex-shrink:0; max-width:220px; text-align:center;">
           <div style="font-family:var(--font-sans); font-weight:800; font-size:40px; color:var(--gold); line-height:1;">2</div>
@@ -1010,7 +1174,7 @@
   <!-- ══════════════════════════════════════════════════════════════
        FUTURE PROJECTS AND EDUCATION PROGRAMS PLACEHOLDER
   ═══════════════════════════════════════════════════════════════ -->
-  <section class="section bg-light" id="projects">
+  <section class="section bg-light" id="projects-more">
     <div class="section-inner">
       <p class="eyebrow">Growing portfolio</p>
       <h2 class="section-h2" style="margin-bottom:12px;">More research and education coming</h2>
