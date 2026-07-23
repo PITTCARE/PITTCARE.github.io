@@ -409,6 +409,11 @@
       background: rgba(102,178,227,0.12);
     }
 
+    .focus-card.ethics-card {
+      border-top-color: var(--gold);
+      background: rgba(255,184,28,0.10);
+    }
+
     .focus-icon {
       font-size: 28px;
       margin-bottom: 16px;
@@ -425,12 +430,47 @@
 
     .focus-card.vop-card .focus-title { color: var(--light-blue); }
 
+    .focus-card.ethics-card .focus-title { color: var(--gold); }
+
     .focus-body {
       font-family: var(--font-serif);
       font-weight: 300;
       font-size: 14px;
       line-height: 1.75;
       color: rgba(255,255,255,0.78);
+    }
+
+    /* ── Ethics & Responsible AI Governance ──────────────────────── */
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+      max-width: 900px;
+    }
+
+    .ethics-chip {
+      background: var(--gray-light);
+      border-left: 3px solid var(--gold);
+      padding: 16px 18px;
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .ethics-chip span {
+      display: block;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--royal);
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .ethics-grid { grid-template-columns: 1fr; }
     }
 
     /* ── Voice of the People feature ─────────────────────────────── */
@@ -750,11 +790,11 @@
       <h1>PITT<span class="accent">CARE</span></h1>
       <p class="hero-full-name">
         Center for <strong><u>P</u></strong>rimary Care <strong><u>I</u></strong>ntelligence-<strong><u>T</u></strong>echnology and <strong><u>T</u></strong>ransformation —<br>
-        <strong><u>C</u></strong>omprehensive, <strong><u>A</u></strong>ccessible, <strong><u>R</u></strong>elationship-Centered, and for <strong><u>E</u></strong>veryone
+        <strong><u>C</u></strong>omprehensive, <strong><u>A</u></strong>ccessible, <strong><u>R</u></strong>elationship-Centered, and <strong><u>E</u></strong>thical
       </p>
       <div class="hero-rule"></div>
       <p class="hero-body">
-        A future in which Intelligence-Technology strengthens — not supplants — the relationship between Primary Care Physicians and the patients, families, and communities they serve, delivering optimal health for everyone.
+        A future in which Intelligence-Technology strengthens — not supplants — the relationship between Primary Care Physicians and the patients, families, and communities they serve, advancing optimal, ethically grounded health for everyone.
       </p>
       <div class="hero-ctas">
         <a href="#about" class="btn btn-primary">Our Mission</a>
@@ -778,11 +818,11 @@
     <div class="vm-grid">
       <div class="vm-card royal fade-in">
         <div class="vm-label">Mission</div>
-        <p class="vm-text">To generate, translate, and disseminate research on the application of Intelligence-Technology in primary care — advancing comprehensive, continuous, and relationship-centered care for everyone, across all ages, backgrounds, and conditions.</p>
+        <p class="vm-text">To generate, translate, and disseminate research on the application of Intelligence-Technology in primary care — advancing care that is comprehensive, accessible, relationship-centered, and ethically accountable, across all ages, backgrounds, and conditions.</p>
       </div>
       <div class="vm-card white fade-in">
         <div class="vm-label">Vision</div>
-        <p class="vm-text">A future in which Intelligence-Technology strengthens — not supplants — the relationship between primary care physicians and the patients, families, and communities they serve, delivering optimal health for everyone.</p>
+        <p class="vm-text">A future in which Intelligence-Technology strengthens — not supplants — the relationship between primary care physicians and the patients, families, and communities they serve, advancing optimal, ethically grounded health for everyone.</p>
       </div>
     </div>
   </div>
@@ -819,7 +859,7 @@
       <p class="section-label">The name</p>
       <h2 class="section-h2 fade-in">Every letter is a founding principle</h2>
       <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; color:#555; margin-bottom:40px; line-height:1.7; max-width:680px;">
-        Each letter in PITTCARE encodes a value drawn from the canonical language of family medicine, as defined by the AAFP and ABFM. Letters marked with ◆ carry a Voice of the People dimension — a commitment to hearing patients and communities as active participants, not passive subjects.
+        Each letter in PITTCARE encodes a value drawn from the canonical language of family medicine, as defined by the AAFP and ABFM — and, for the second half of the name, from global standards for the ethical use of AI in health. Letters marked with ◆ carry a Voice of the People dimension — a commitment to hearing patients and communities as active participants, not passive subjects.
       </p>
       <div class="pillars-grid fade-in">
         <div class="pillar">
@@ -869,15 +909,15 @@
         <div class="pillar">
           <div class="pillar-letter">E</div>
           <div class="pillar-word">
-            Everyone
+            Ethical
             <span class="vop-dot" title="Voice of the People dimension"></span>
           </div>
-          <p class="pillar-desc">Optimal health for everyone requires that everyone be heard. The Voice of the People Survey is our structural commitment to that — reaching a representative cross-section of patients, families, and physicians annually, so that no community's experience of Intelligence-Technology goes unrecorded or unaddressed.</p>
+          <p class="pillar-desc">Grounded in the World Health Organization's global guidance on AI in health — protecting patient autonomy, ensuring transparency and explainability, fostering accountability, and safeguarding equity. PITTCARE treats ethical review as a standing practice, not a one-time checkpoint; the Voice of the People Survey is how that commitment stays answerable to the patients, families, and clinicians it serves.</p>
         </div>
       </div>
       <p class="pillars-note">
         <span class="vop-dot"></span>
-        Letters marked with ◆ carry a Voice of the People dimension — grounded in AAFP · ABFM canonical language
+        Letters marked with ◆ carry a Voice of the People dimension — grounded in AAFP · ABFM canonical language and WHO guidance on ethical AI in health
       </p>
     </div>
   </section>
@@ -887,7 +927,7 @@
     <div class="section-inner">
       <p class="section-label on-dark">Core focus areas</p>
       <h2 class="section-h2 on-dark fade-in">Research that serves people first</h2>
-      <p class="section-lead on-dark">Three interconnected areas where Intelligence-Technology meets the values of primary care — comprehensive, continuous, and centered on everyone.</p>
+      <p class="section-lead on-dark">Three interconnected areas where Intelligence-Technology meets the values of primary care — comprehensive, accountable, and centered on the people it serves.</p>
       <div class="focus-grid fade-in">
         <div class="focus-card">
           <span class="focus-icon">⚕</span>
@@ -899,19 +939,44 @@
           <div class="focus-title">Whole-Person &amp; Behavioral Health</div>
           <p class="focus-body">Integrating the biopsychosocial model into IT systems — ensuring mental health, social context, spiritual dimensions, and patient values are present in how algorithms reason and recommend.</p>
         </div>
-        <div class="focus-card vop-card">
-          <span class="focus-icon">◆</span>
-          <div class="focus-title">Voice of the People Survey</div>
-          <p class="focus-body">An annual structured-interview study of patients, families, and physicians on their experiences with Intelligence-Technology in care — published each year as a public report and community resource.</p>
+        <div class="focus-card ethics-card">
+          <span class="focus-icon">★</span>
+          <div class="focus-title">Ethics &amp; Responsible AI Governance</div>
+          <p class="focus-body">Applying WHO-aligned principles — autonomy, transparency, accountability, and equity — to how Intelligence-Technology is designed, deployed, and overseen in primary care. The Voice of the People Survey is this pillar's flagship program.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── Ethics & Responsible AI Governance ─────────────────────── -->
+  <section style="background: var(--white); padding: var(--section-pad);" id="ethics">
+    <div class="section-inner">
+      <p class="section-label">Ethics &amp; responsible AI governance</p>
+      <h2 class="section-h2 fade-in">Ethical review as a standing practice</h2>
+      <p class="section-lead" style="max-width:760px;">
+        PITTCARE grounds its ethics work in the World Health Organization's 2021 global guidance on AI in health, which names six consensus principles for the ethical design and use of AI in health care.
+      </p>
+      <div class="ethics-grid fade-in">
+        <div class="ethics-chip"><span>Autonomy</span>Patients and clinicians retain control over medical decisions.</div>
+        <div class="ethics-chip"><span>Well-being &amp; Safety</span>Tools meet regulatory standards for accuracy and do no avoidable harm.</div>
+        <div class="ethics-chip"><span>Transparency</span>How a tool reasons is explainable to the people who rely on it.</div>
+        <div class="ethics-chip"><span>Accountability</span>Responsibility for outcomes rests with named people, not the algorithm.</div>
+        <div class="ethics-chip"><span>Equity</span>Performance is monitored for bias across populations before and after deployment.</div>
+        <div class="ethics-chip"><span>Sustainability</span>Systems are built to stay responsive as the technology and evidence evolve.</div>
+      </div>
+      <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; line-height:1.8; color:#444; max-width:760px; margin-top:32px;">
+        For PITTCARE, this isn't an abstract checklist — it's a set of standing commitments carried into every project, from data use and consent, to bias monitoring, to who is accountable when something goes wrong.
+      </p>
+      <p style="font-family:var(--font-serif); font-weight:300; font-size:15px; line-height:1.8; color:#444; max-width:760px; margin-top:16px;">
+        The <a href="#vop" style="color:var(--royal); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);">Voice of the People Survey</a> is the most visible expression of that commitment — an annual, structured-interview study that keeps PITTCARE answerable to the communities most affected by the technologies it studies.
+      </p>
     </div>
   </section>
 
   <!-- ── Voice of the People ─────────────────────────────────────── -->
   <section class="vop-section" id="vop" style="padding: var(--section-pad);">
     <div class="section-inner">
-      <p class="section-label">A hallmark commitment</p>
+      <p class="section-label">A hallmark commitment of the Ethics pillar</p>
       <div class="vop-grid">
         <div class="vop-main">
           <h3>Voice of the<br><em>People Survey</em></h3>

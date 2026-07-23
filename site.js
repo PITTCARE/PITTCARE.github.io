@@ -22,6 +22,7 @@
     { href: 'index.html',          label: 'Home',               id: 'home' },
     { href: 'index.html#about',    label: 'About',              id: 'about' },
     { href: 'research.html',       label: 'Research',           id: 'research' },
+    { href: 'index.html#ethics',   label: 'Ethics',              id: 'ethics' },
     { href: 'index.html#vop',      label: 'Voice of the People',id: 'vop' },
     { href: 'collaborators.html',  label: 'Collaborators',      id: 'collaborators' },
     { href: 'advisory-board.html', label: 'Advisory Board',     id: 'advisory-board' },
@@ -336,6 +337,7 @@
           <li><a href="index.html#about">About PITTCARE</a></li>
           <li><a href="index.html#the-name">The Name</a></li>
           <li><a href="research.html">Research &amp; Projects</a></li>
+          <li><a href="index.html#ethics">Ethics &amp; Responsible AI Governance</a></li>
           <li><a href="index.html#vop">Voice of the People Survey</a></li>
           <li><a href="collaborators.html">Key Collaborators</a></li>
           <li><a href="advisory-board.html">External Advisory Board</a></li>
