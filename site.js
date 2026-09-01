@@ -11,7 +11,7 @@
 
   const NAV_LINKS = [
     { href: 'index.html',         label: 'Home',     id: 'home' },
-    { href: 'index.html#about',   label: 'About',    id: 'about' },
+    { href: 'about.html',         label: 'About',    id: 'about' },
     { href: 'research.html',      label: 'Research', id: 'research' },
     { href: 'team.html',          label: 'Team',      id: 'team' },
     { href: 'index.html#contact', label: 'Contact',  id: 'contact' },
@@ -42,7 +42,8 @@
       <div>
         <div class="footer-col-title">Explore</div>
         <ul class="footer-links">
-          <li><a href="index.html#about">About &amp; Mission</a></li>
+          <li><a href="about.html">About &amp; History</a></li>
+          <li><a href="index.html#about">Mission &amp; the Name</a></li>
           <li><a href="index.html#ethics">Ethics &amp; Governance</a></li>
           <li><a href="research.html">Research &amp; Projects</a></li>
           <li><a href="team.html">Team, Partners &amp; Advisory Board</a></li>
