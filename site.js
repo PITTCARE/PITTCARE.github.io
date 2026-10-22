@@ -43,8 +43,9 @@
         <div class="footer-col-title">Explore</div>
         <ul class="footer-links">
           <li><a href="about.html">About &amp; History</a></li>
+          <li><a href="about.html#lexicon">Our Terms</a></li>
           <li><a href="index.html#about">Mission &amp; the Name</a></li>
-          <li><a href="index.html#ethics">Ethics &amp; Governance</a></li>
+          <li><a href="index.html#ethics">Ethics of Intelligence-Technology</a></li>
           <li><a href="research.html">Research &amp; Projects</a></li>
           <li><a href="team.html">Team, Partners &amp; Advisory Board</a></li>
         </ul>

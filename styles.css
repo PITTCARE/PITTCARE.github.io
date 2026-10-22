@@ -92,6 +92,7 @@ img { max-width: 100%; display: block; }
 .chip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
 .chip { background: var(--white); border-left: 3px solid var(--gold); padding: 12px 14px; font-family: var(--font-sans); font-size: 13px; color: #333; }
 .chip b { display: block; color: var(--royal); font-size: 13.5px; margin-bottom: 2px; }
+.chip em { display: block; font-style: normal; font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light-blue); margin-bottom: 3px; }
 
 /* ── Person / project cards (shared: research + team pages) ──────── */
 .person-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
